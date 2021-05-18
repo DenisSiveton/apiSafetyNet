@@ -8,8 +8,9 @@ public class MedicalRecord {
 
     private String lastName;
 
+    private String birthdate;
+
     private Vector<String> medications;
 
     private Vector<String> allergies;
-
 }
