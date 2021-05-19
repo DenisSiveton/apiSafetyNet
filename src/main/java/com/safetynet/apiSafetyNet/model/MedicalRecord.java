@@ -1,7 +1,9 @@
 package com.safetynet.apiSafetyNet.model;
 
 import java.util.Vector;
+import lombok.Data;
 
+@Data
 public class MedicalRecord {
 
     private String firstName;
