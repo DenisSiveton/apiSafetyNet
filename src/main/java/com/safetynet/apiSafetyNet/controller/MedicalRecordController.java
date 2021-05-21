@@ -2,7 +2,6 @@ package com.safetynet.apiSafetyNet.controller;
 import com.safetynet.apiSafetyNet.model.MedicalRecord;
 import com.safetynet.apiSafetyNet.model.Person;
 import com.safetynet.apiSafetyNet.service.MedicalRecordService;
-import com.safetynet.apiSafetyNet.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,17 +12,17 @@ public class MedicalRecordController {
     private MedicalRecordService medicalRecordService;
 
     @PostMapping("/medicalrecord")
-    public MedicalRecord addMedicalRecord() {
-        return medicalRecordService.addMedicalRecord();
+    public MedicalRecord addMedicalRecord(@RequestBody MedicalRecord medicalRecord, @RequestBody Person person) {
+        return medicalRecordService.addMedicalRecord(medicalRecord, person);
     }
 
     @PatchMapping("/medicalrecord")
-    public MedicalRecord modifyInfoMedicalRecord() {
-        return medicalRecordService.modifyInfoMedicalRecord();
+    public MedicalRecord modifyInfoMedicalRecord(@RequestBody MedicalRecord medicalRecord, @RequestBody Person person) {
+        return medicalRecordService.modifyInfoMedicalRecord(medicalRecord, person);
     }
 
     @DeleteMapping("/medicalrecord")
-    public void deleteMedicalRecord() {
-        medicalRecordService.deleteMedicalRecord();
+    public void deleteMedicalRecord(@RequestBody MedicalRecord medicalRecord) {
+        medicalRecordService.deleteMedicalRecord(medicalRecord);
     }
 }
