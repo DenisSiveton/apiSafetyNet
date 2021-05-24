@@ -1,16 +1,18 @@
-package com.safetynet.apiSafetyNet.model;
+package com.safetynet.apiSafetyNet.model.viewModel.OutputData;
 
 import java.util.Vector;
 import lombok.Data;
 
 @Data
-public class MedicalRecord {
-
-    private String firstName;
+public class PersonInfo {
 
     private String lastName;
 
-    private String birthDate;
+    private String address;
+
+    private int age;
+
+    private String email;
 
     private Vector<String> medications;
 

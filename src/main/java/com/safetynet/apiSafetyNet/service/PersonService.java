@@ -1,39 +1,49 @@
 package com.safetynet.apiSafetyNet.service;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.safetynet.apiSafetyNet.model.Person;
+import com.safetynet.apiSafetyNet.model.viewModel.OutputData.ChildrenInfo;
+import com.safetynet.apiSafetyNet.model.viewModel.OutputData.PersonInfo;
+import com.safetynet.apiSafetyNet.repository.PersonRepository;
 import lombok.Data;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Data
 @Service
 public class PersonService {
 
-    public JSONPObject addPerson(Person person) {
+    private PersonRepository personRepository;
+
+    public PersonService(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
+
+    public Person addPerson(Person person) {
         return null;
     }
 
     public void deletePerson(Person person) {
     }
 
-    public JSONPObject modifyInfoPerson(Person person) {
+    public Person modifyInfoPerson(Person person) {
         return null;
     }
 
-    public JSONPObject getMailFromAllPersonsFromCity(String city) {
+    public List<String> getMailFromAllPersonsFromCity(String city) {
+        return personRepository.getMailFromAllPersonsFromCity(city);
+    }
+
+    public PersonInfo getIntoFromPersonWithName(String firstName, String lastName) {
+        return null;
+
+    }
+
+    public ChildrenInfo getChildListFromAddress(String address) {
         return null;
     }
 
-    public JSONPObject getIntoFromPersonWithName(String firstName, String lastName) {
-        return null;
-
-    }
-
-    public JSONPObject getChildListFromAddress(String address) {
-        return null;
-    }
-
-    public JSONPObject getPhoneNumberListFromFireStationNumber(int fireStation) {
-        return null;
+    public List<String> getPhoneNumberListFromFireStationNumber(int fireStation) {
+        return personRepository.getPhoneNumberListFromFireStationNumber(fireStation);
     }
 }
