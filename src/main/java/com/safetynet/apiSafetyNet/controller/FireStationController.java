@@ -1,8 +1,8 @@
 package com.safetynet.apiSafetyNet.controller;
-import com.safetynet.apiSafetyNet.model.FireStation;
-import com.safetynet.apiSafetyNet.model.viewModel.OutputData.AddressInfo;
-import com.safetynet.apiSafetyNet.model.viewModel.OutputData.HomeInfo;
-import com.safetynet.apiSafetyNet.model.viewModel.OutputData.InhabitantInfo;
+import com.safetynet.apiSafetyNet.model.InputData.FireStation;
+import com.safetynet.apiSafetyNet.model.OutputData.AddressInfo;
+import com.safetynet.apiSafetyNet.model.OutputData.HomeInfo;
+import com.safetynet.apiSafetyNet.model.OutputData.InhabitantInfo;
 import com.safetynet.apiSafetyNet.service.FireStationService;
 import org.springframework.web.bind.annotation.*;
 

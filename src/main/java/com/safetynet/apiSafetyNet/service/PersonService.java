@@ -1,8 +1,8 @@
 package com.safetynet.apiSafetyNet.service;
 
-import com.safetynet.apiSafetyNet.model.Person;
-import com.safetynet.apiSafetyNet.model.viewModel.OutputData.ChildrenInfo;
-import com.safetynet.apiSafetyNet.model.viewModel.OutputData.PersonInfo;
+import com.safetynet.apiSafetyNet.model.InputData.Person;
+import com.safetynet.apiSafetyNet.model.OutputData.ChildrenInfo;
+import com.safetynet.apiSafetyNet.model.OutputData.PersonInfo;
 import com.safetynet.apiSafetyNet.repository.PersonRepository;
 import lombok.Data;
 import org.springframework.stereotype.Service;
