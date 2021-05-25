@@ -1,8 +1,8 @@
 package com.safetynet.apiSafetyNet.repository;
 
 import com.jsoniter.JsonIterator;
-import com.safetynet.apiSafetyNet.model.FireStation;
-import com.safetynet.apiSafetyNet.model.Person;
+import com.safetynet.apiSafetyNet.model.InputData.FireStation;
+import com.safetynet.apiSafetyNet.model.InputData.Person;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

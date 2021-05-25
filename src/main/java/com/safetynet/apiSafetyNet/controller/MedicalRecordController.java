@@ -1,6 +1,6 @@
 package com.safetynet.apiSafetyNet.controller;
-import com.safetynet.apiSafetyNet.model.MedicalRecord;
-import com.safetynet.apiSafetyNet.model.Person;
+import com.safetynet.apiSafetyNet.model.InputData.MedicalRecord;
+import com.safetynet.apiSafetyNet.model.InputData.Person;
 import com.safetynet.apiSafetyNet.service.MedicalRecordService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,13 +15,13 @@ public class MedicalRecordController {
     }
 
     @PostMapping("/medicalrecord")
-    public MedicalRecord addMedicalRecord(@RequestBody MedicalRecord medicalRecord, @RequestBody Person person) {
-        return medicalRecordService.addMedicalRecord(medicalRecord, person);
+    public MedicalRecord addMedicalRecord(@RequestBody MedicalRecord medicalRecord) {
+        return medicalRecordService.addMedicalRecord(medicalRecord);
     }
 
     @PatchMapping("/medicalrecord")
-    public MedicalRecord modifyInfoMedicalRecord(@RequestBody MedicalRecord medicalRecord, @RequestBody Person person) {
-        return medicalRecordService.modifyInfoMedicalRecord(medicalRecord, person);
+    public MedicalRecord modifyInfoMedicalRecord(@RequestBody MedicalRecord medicalRecord) {
+        return medicalRecordService.modifyInfoMedicalRecord(medicalRecord);
     }
 
     @DeleteMapping("/medicalrecord")

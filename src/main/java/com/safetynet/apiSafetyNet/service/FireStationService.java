@@ -1,9 +1,9 @@
 package com.safetynet.apiSafetyNet.service;
 
-import com.safetynet.apiSafetyNet.model.FireStation;
-import com.safetynet.apiSafetyNet.model.viewModel.OutputData.AddressInfo;
-import com.safetynet.apiSafetyNet.model.viewModel.OutputData.HomeInfo;
-import com.safetynet.apiSafetyNet.model.viewModel.OutputData.InhabitantInfo;
+import com.safetynet.apiSafetyNet.model.InputData.FireStation;
+import com.safetynet.apiSafetyNet.model.OutputData.AddressInfo;
+import com.safetynet.apiSafetyNet.model.OutputData.HomeInfo;
+import com.safetynet.apiSafetyNet.model.OutputData.InhabitantInfo;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 
