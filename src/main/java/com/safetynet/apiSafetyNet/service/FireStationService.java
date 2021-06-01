@@ -4,6 +4,7 @@ import com.safetynet.apiSafetyNet.model.InputData.FireStation;
 import com.safetynet.apiSafetyNet.model.OutputData.AddressInfo;
 import com.safetynet.apiSafetyNet.model.OutputData.HomeInfo;
 import com.safetynet.apiSafetyNet.model.OutputData.InhabitantInfo;
+import com.safetynet.apiSafetyNet.repository.FireStationRepository;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 
@@ -14,26 +15,28 @@ import java.util.List;
 @Service
 public class FireStationService {
 
+    private FireStationRepository fireStationRepository;
+
     public FireStation addFireStation(FireStation fireStation) {
         return null;
-    }
-
-    public void deleteFireStation(FireStation fireStation) {
     }
 
     public FireStation modifyInfoFireStation(FireStation fireStation) {
         return null;
     }
 
-    public InhabitantInfo getInfoPersonFromFireStationNumber(int stationNumber) {
-        return null;
+    public void deleteFireStation(FireStation fireStation) {
+    }
+
+    public InhabitantInfo getInfoPersonFromFireStationNumber(String  stationNumber) {
+        return fireStationRepository.getInfoPersonFromFireStationNumber(stationNumber);
     }
 
     public AddressInfo getInfoFromEachPersonFromAddressAndAppointedFireStationNumber(String address) {
-        return null;
+        return fireStationRepository.getInfoFromEachPersonFromAddressAndAppointedFireStationNumber(address);
     }
 
-    public List<HomeInfo> getHomeInfoListsFromFiresStationNumbers(ArrayList<Integer> stations) {
-        return null;
+    public ArrayList<HomeInfo> getHomeInfoListsFromFireStationNumbers(ArrayList<String> stations) {
+        return fireStationRepository.getHomeInfoListsFromFireStationNumbers(stations);
     }
 }

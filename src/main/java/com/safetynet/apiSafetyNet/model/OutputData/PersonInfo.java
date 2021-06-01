@@ -18,4 +18,16 @@ public class PersonInfo {
     private ArrayList<String> medications;
 
     private ArrayList<String> allergies;
+
+    @Override
+    public String toString() {
+        return "PersonInfo{" +
+                "lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", medications=" + medications +
+                ", allergies=" + allergies +
+                '}';
+    }
 }

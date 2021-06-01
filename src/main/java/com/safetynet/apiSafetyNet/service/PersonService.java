@@ -7,6 +7,8 @@ import com.safetynet.apiSafetyNet.repository.PersonRepository;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -19,31 +21,32 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    public Person addPerson(Person person) {
-        return null;
+    public Person addPerson(Person person) throws FileNotFoundException {
+        return personRepository.addPerson(person);
     }
 
     public void deletePerson(Person person) {
+        personRepository.deletePerson(person);
     }
 
     public Person modifyInfoPerson(Person person) {
-        return null;
+        return personRepository.modifyInfoPerson(person);
     }
 
     public List<String> getMailFromAllPersonsFromCity(String city) {
         return personRepository.getMailFromAllPersonsFromCity(city);
     }
 
-    public PersonInfo getIntoFromPersonWithName(String firstName, String lastName) {
-        return null;
+    public PersonInfo getInfoFromPersonWithName(String firstName, String lastName) {
+        return personRepository.getInfoFromPersonWithName(firstName, lastName);
 
     }
 
     public ChildrenInfo getChildListFromAddress(String address) {
-        return null;
+        return personRepository.getChildListFromAddress(address);
     }
 
-    public List<String> getPhoneNumberListFromFireStationNumber(int fireStation) {
+    public ArrayList<String> getPhoneNumberListFromFireStationNumber(String fireStation) {
         return personRepository.getPhoneNumberListFromFireStationNumber(fireStation);
     }
 }

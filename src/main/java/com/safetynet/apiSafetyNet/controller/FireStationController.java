@@ -34,18 +34,18 @@ public class FireStationController {
         fireStationService.deleteFireStation(fireStation);
     }
 
-    @GetMapping("/firestation?stationNumber=<station_number>")
-    public InhabitantInfo getInfoPersonFromFireStationNumber(@PathVariable("stationNumber") final int stationNumber) {
+    @GetMapping("/firestation")
+    public InhabitantInfo getInfoPersonFromFireStationNumber(@RequestParam( name = "stationNumber") String stationNumber) {
         return fireStationService.getInfoPersonFromFireStationNumber(stationNumber);
     }
 
-    @GetMapping("/flood/stations?stations=<a_list_of_station_numbers>")
-    public List<HomeInfo> getHomeListsFromFiresStationNumbers(@PathVariable("stations") final ArrayList<Integer> stations) {
-        return fireStationService.getHomeInfoListsFromFiresStationNumbers(stations);
+    @GetMapping("/flood/stations")
+    public ArrayList<HomeInfo> getHomeListsFromFiresStationNumbers(@RequestParam(name = "stations") ArrayList<String> stations) {
+        return fireStationService.getHomeInfoListsFromFireStationNumbers(stations);
     }
 
-    @GetMapping("/fire?address=<address>")
-    public AddressInfo getInfoFromEachPersonFromAddressAndAppointedFireStationNumber(@PathVariable("address") final String address) {
+    @GetMapping("/fire")
+    public AddressInfo getInfoFromEachPersonFromAddressAndAppointedFireStationNumber(@RequestParam(name = "address") String address) {
         return fireStationService.getInfoFromEachPersonFromAddressAndAppointedFireStationNumber(address);
     }
 }
