@@ -27,7 +27,7 @@ public class FireStationControllerTest {
     private FireStationService fireStationService;
 
     @Test
-    public void testAddMedicalRecord() throws Exception {
+    public void testAddFireStation() throws Exception {
         FireStation fireStationTest = generateFireStation();
         mockMvc.perform(post("/firestation")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -36,7 +36,7 @@ public class FireStationControllerTest {
     }
 
     @Test
-    public void testModifyInfoMedicalRecord() throws Exception {
+    public void testModifyInfoFireStation() throws Exception {
         FireStation fireStationTest = generateFireStation();
         mockMvc.perform(patch("/firestation")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -45,7 +45,7 @@ public class FireStationControllerTest {
     }
 
     @Test
-    public void testDeleteMedicalRecord() throws Exception {
+    public void testDeleteFireStation() throws Exception {
         FireStation fireStationTest = generateFireStation();
         mockMvc.perform(delete("/firestation")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -56,7 +56,7 @@ public class FireStationControllerTest {
     @Test
     public void testGetInfoPersonFromFireStationNumber() throws Exception {
         String stationNumber = "1";
-        mockMvc.perform(delete("//firestation?stationNumber=<station_number>")
+        mockMvc.perform(get("/firestation")
                 .param("stationNumber", stationNumber))
                 .andExpect(status().isOk());
     }
@@ -64,7 +64,7 @@ public class FireStationControllerTest {
     @Test
     public void getHomeListsFromFiresStationNumbers() throws Exception {
         ArrayList<String> stations = new ArrayList<>(Arrays.asList("1", "2"));
-        mockMvc.perform(delete("/flood/stations?stations=<a_list_of_station_numbers>")
+        mockMvc.perform(get("/flood/stations")
                 .param("stations", stations.get(0))
                 .param("stations", stations.get(1)))
                 .andExpect(status().isOk());
@@ -72,8 +72,8 @@ public class FireStationControllerTest {
 
     @Test
     public void getInfoFromEachPersonFromAddressAndAppointedFireStationNumber() throws Exception {
-        String address = "1";
-        mockMvc.perform(delete("/fire?address=<address>")
+        String address = "1509 Culver St";
+        mockMvc.perform(get("/fire")
                 .param("address", address))
                 .andExpect(status().isOk());
     }
@@ -81,7 +81,7 @@ public class FireStationControllerTest {
     private static FireStation generateFireStation() {
         FireStation fireStationTest = new FireStation();
         fireStationTest.setAddress("15 Fame Road");
-        fireStationTest.setStation(1);
+        fireStationTest.setStation("1");
         return fireStationTest;
     }
 

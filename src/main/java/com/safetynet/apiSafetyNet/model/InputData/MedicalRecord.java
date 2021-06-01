@@ -15,4 +15,15 @@ public class MedicalRecord {
     private ArrayList<String> medications;
 
     private ArrayList<String> allergies;
+
+    @Override
+    public String toString() {
+        return "MedicalRecord{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                ", medications=" + medications +
+                ", allergies=" + allergies +
+                '}';
+    }
 }
