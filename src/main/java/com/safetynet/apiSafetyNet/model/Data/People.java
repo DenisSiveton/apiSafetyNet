@@ -10,4 +10,19 @@ public class People {
     private String lastName;
 
     private int age;
+
+    public People(String firstName, String lastName, int agePerson) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = agePerson;
+    }
+
+    @Override
+    public String toString() {
+        return "People{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }

@@ -6,5 +6,13 @@ public class FireStation {
 
     private String address;
 
-    private int station;
+    private String station;
+
+    @Override
+    public String toString() {
+        return "FireStation{" +
+                "address='" + address + '\'' +
+                ", station=" + station +
+                '}';
+    }
 }
