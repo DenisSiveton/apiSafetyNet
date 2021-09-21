@@ -980,3 +980,1833 @@ HEADERS :
 	Date :Mon, 20 Sep 2021 11:09:37 GMT
 	Keep-Alive :timeout=60
 	Connection :keep-alive
+2021-09-22 01:13:48.056  INFO 24656 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 24656 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-22 01:13:48.060 DEBUG 24656 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-22 01:13:48.060  INFO 24656 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-22 01:13:49.725  INFO 24656 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-22 01:13:50.046 DEBUG 24656 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-22 01:13:50.601  WARN 24656 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'xmlModelPlugin': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [springfox.documentation.schema.XmlModelPlugin] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418]
+2021-09-22 01:13:50.649 ERROR 24656 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'xmlModelPlugin': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [springfox.documentation.schema.XmlModelPlugin] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:289) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1284) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1201) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:564) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:944) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.6.jar:5.3.6]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.6.jar:5.3.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144) ~[spring-boot-2.4.5.jar:2.4.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:782) ~[spring-boot-2.4.5.jar:2.4.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:774) ~[spring-boot-2.4.5.jar:2.4.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-2.4.5.jar:2.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:339) ~[spring-boot-2.4.5.jar:2.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1340) ~[spring-boot-2.4.5.jar:2.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1329) ~[spring-boot-2.4.5.jar:2.4.5]
+	at com.safetynet.apiSafetyNet.ApiSafetyNetApplication.main(ApiSafetyNetApplication.java:17) ~[classes/:na]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [springfox.documentation.schema.XmlModelPlugin] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:481) ~[spring-core-5.3.6.jar:5.3.6]
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:321) ~[spring-core-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:267) ~[spring-beans-5.3.6.jar:5.3.6]
+	... 19 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: javax/xml/bind/annotation/XmlType
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3244) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2387) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:463) ~[spring-core-5.3.6.jar:5.3.6]
+	... 21 common frames omitted
+Caused by: java.lang.ClassNotFoundException: javax.xml.bind.annotation.XmlType
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:602) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522) ~[na:na]
+	... 25 common frames omitted
+
+2021-09-22 01:17:20.299  INFO 14108 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 14108 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-22 01:17:20.302 DEBUG 14108 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-22 01:17:20.303  INFO 14108 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-22 01:17:22.819  INFO 14108 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-22 01:17:23.186 DEBUG 14108 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-22 01:17:23.801  WARN 14108 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'xmlModelPlugin': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [springfox.documentation.schema.XmlModelPlugin] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418]
+2021-09-22 01:17:23.845 ERROR 14108 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'xmlModelPlugin': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [springfox.documentation.schema.XmlModelPlugin] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:289) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1284) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1201) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:564) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:944) ~[spring-beans-5.3.6.jar:5.3.6]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.6.jar:5.3.6]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.6.jar:5.3.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144) ~[spring-boot-2.4.5.jar:2.4.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:782) ~[spring-boot-2.4.5.jar:2.4.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:774) ~[spring-boot-2.4.5.jar:2.4.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-2.4.5.jar:2.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:339) ~[spring-boot-2.4.5.jar:2.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1340) ~[spring-boot-2.4.5.jar:2.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1329) ~[spring-boot-2.4.5.jar:2.4.5]
+	at com.safetynet.apiSafetyNet.ApiSafetyNetApplication.main(ApiSafetyNetApplication.java:17) ~[classes/:na]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [springfox.documentation.schema.XmlModelPlugin] from ClassLoader [jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:481) ~[spring-core-5.3.6.jar:5.3.6]
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:321) ~[spring-core-5.3.6.jar:5.3.6]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:267) ~[spring-beans-5.3.6.jar:5.3.6]
+	... 19 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: javax/xml/bind/annotation/XmlType
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3244) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2387) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:463) ~[spring-core-5.3.6.jar:5.3.6]
+	... 21 common frames omitted
+Caused by: java.lang.ClassNotFoundException: javax.xml.bind.annotation.XmlType
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:602) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522) ~[na:na]
+	... 25 common frames omitted
+
+2021-09-22 01:22:40.827  INFO 28876 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 28876 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-22 01:22:40.831 DEBUG 28876 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-22 01:22:40.832  INFO 28876 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-22 01:22:43.028  INFO 28876 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-22 01:22:43.385 DEBUG 28876 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-22 01:22:44.305  INFO 28876 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-22 01:22:44.432  INFO 28876 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 4.174 seconds (JVM running for 4.768)
+2021-09-22 01:23:14.995  INFO 28876 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/v2/api-docs?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	sec-ch-ua-platform :"Windows"
+	upgrade-insecure-requests :1
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	accept :text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+	sec-fetch-site :none
+	sec-fetch-mode :navigate
+	sec-fetch-user :?1
+	sec-fetch-dest :document
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:23:15.171  INFO 28876 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/favicon.ico?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :image
+	referer :http://localhost:8080/v2/api-docs
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:23:15.186 ERROR 28876 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+2021-09-22 01:23:15.215 ERROR 28876 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+	Content-Type :application/json
+	Transfer-Encoding :chunked
+	Date :Tue, 21 Sep 2021 23:23:15 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:23:48.422  INFO 28876 --- [http-nio-8080-exec-6] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-ui.html?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	sec-ch-ua-platform :"Windows"
+	upgrade-insecure-requests :1
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	accept :text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+	sec-fetch-site :none
+	sec-fetch-mode :navigate
+	sec-fetch-user :?1
+	sec-fetch-dest :document
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:23:48.440  INFO 28876 --- [http-nio-8080-exec-6] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+	Last-Modified :Tue, 21 Sep 2021 23:08:12 GMT
+	Accept-Ranges :bytes
+	Content-Type :text/html
+	Content-Length :3381
+	Date :Tue, 21 Sep 2021 23:23:48 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:23:48.561  INFO 28876 --- [http-nio-8080-exec-7] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :text/css,*/*;q=0.1
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :style
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:23:48.561  INFO 28876 --- [http-nio-8080-exec-9] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/swagger-ui-bundle.js?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :script
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:23:48.560  INFO 28876 --- [http-nio-8080-exec-8] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/swagger-ui.css?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :text/css,*/*;q=0.1
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :style
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:23:48.564  INFO 28876 --- [http-nio-8080-exec-10] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/springfox.js?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :script
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:23:48.565  INFO 28876 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/swagger-ui-standalone-preset.js?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :script
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:23:48.569  INFO 28876 --- [http-nio-8080-exec-7] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+	Last-Modified :Tue, 21 Sep 2021 23:08:12 GMT
+	Accept-Ranges :bytes
+	Content-Type :text/css
+	Content-Length :2894
+	Date :Tue, 21 Sep 2021 23:23:48 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:23:48.571  INFO 28876 --- [http-nio-8080-exec-10] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+	Last-Modified :Tue, 21 Sep 2021 23:08:12 GMT
+	Accept-Ranges :bytes
+	Content-Type :application/javascript
+	Content-Length :4034
+	Date :Tue, 21 Sep 2021 23:23:48 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:23:48.576  INFO 28876 --- [http-nio-8080-exec-8] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+	Last-Modified :Tue, 21 Sep 2021 23:08:12 GMT
+	Accept-Ranges :bytes
+	Content-Type :text/css
+	Content-Length :33837
+	Date :Tue, 21 Sep 2021 23:23:48 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:23:48.588  INFO 28876 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+	Last-Modified :Tue, 21 Sep 2021 23:08:12 GMT
+	Accept-Ranges :bytes
+	Content-Type :application/javascript
+	Content-Length :330779
+	Date :Tue, 21 Sep 2021 23:23:48 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:23:48.615  INFO 28876 --- [http-nio-8080-exec-9] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+	Last-Modified :Tue, 21 Sep 2021 23:08:12 GMT
+	Accept-Ranges :bytes
+	Content-Type :application/javascript
+	Content-Length :1530897
+	Date :Tue, 21 Sep 2021 23:23:48 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:23:48.779  INFO 28876 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-resources/configuration/ui?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:23:48.782  INFO 28876 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/favicon-32x32.png?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :image
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:23:48.785  INFO 28876 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+	Last-Modified :Tue, 21 Sep 2021 23:08:12 GMT
+	Accept-Ranges :bytes
+	Content-Type :image/png
+	Content-Length :1141
+	Date :Tue, 21 Sep 2021 23:23:48 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:23:48.793  INFO 28876 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Content-Type :application/json
+	Transfer-Encoding :chunked
+	Date :Tue, 21 Sep 2021 23:23:48 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:23:48.796  INFO 28876 --- [http-nio-8080-exec-4] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-resources/configuration/security?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:23:48.800  INFO 28876 --- [http-nio-8080-exec-4] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Content-Type :application/json
+	Transfer-Encoding :chunked
+	Date :Tue, 21 Sep 2021 23:23:48 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:23:48.802  INFO 28876 --- [http-nio-8080-exec-5] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-resources?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:23:48.806  INFO 28876 --- [http-nio-8080-exec-5] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Content-Type :application/json
+	Transfer-Encoding :chunked
+	Date :Tue, 21 Sep 2021 23:23:48 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:23:48.824  INFO 28876 --- [http-nio-8080-exec-6] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/v2/api-docs?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	accept :application/json,*/*
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:23:48.862  INFO 28876 --- [http-nio-8080-exec-7] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/titillium-web-v6-latin-700.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:23:48.865  INFO 28876 --- [http-nio-8080-exec-7] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+	Last-Modified :Tue, 21 Sep 2021 23:08:12 GMT
+	Accept-Ranges :bytes
+	Content-Type :application/font-woff2
+	Content-Length :11640
+	Date :Tue, 21 Sep 2021 23:23:48 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:23:48.911  INFO 28876 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/open-sans-v15-latin-regular.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:23:48.911  INFO 28876 --- [http-nio-8080-exec-10] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/open-sans-v15-latin-700.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:23:48.911  INFO 28876 --- [http-nio-8080-exec-8] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/source-code-pro-v7-latin-300.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:23:48.914  INFO 28876 --- [http-nio-8080-exec-10] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+	Last-Modified :Tue, 21 Sep 2021 23:08:12 GMT
+	Accept-Ranges :bytes
+	Content-Type :application/font-woff2
+	Content-Length :14720
+	Date :Tue, 21 Sep 2021 23:23:48 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:23:48.914  INFO 28876 --- [http-nio-8080-exec-8] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+	Last-Modified :Tue, 21 Sep 2021 23:08:12 GMT
+	Accept-Ranges :bytes
+	Content-Type :application/font-woff2
+	Content-Length :13292
+	Date :Tue, 21 Sep 2021 23:23:48 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:23:48.915  INFO 28876 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+	Last-Modified :Tue, 21 Sep 2021 23:08:12 GMT
+	Accept-Ranges :bytes
+	Content-Type :application/font-woff2
+	Content-Length :14048
+	Date :Tue, 21 Sep 2021 23:23:48 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:24:57.993  INFO 16148 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 16148 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-22 01:24:57.997 DEBUG 16148 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-22 01:24:57.997  INFO 16148 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-22 01:24:59.615  INFO 16148 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-22 01:24:59.926 DEBUG 16148 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-22 01:25:00.799  INFO 16148 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-22 01:25:00.941  INFO 16148 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 3.467 seconds (JVM running for 4.036)
+2021-09-22 01:25:42.430  INFO 23932 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 23932 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-22 01:25:42.434 DEBUG 23932 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-22 01:25:42.435  INFO 23932 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-22 01:25:44.574  INFO 23932 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-22 01:25:44.890 DEBUG 23932 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-22 01:25:45.780  INFO 23932 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-22 01:25:46.180  INFO 23932 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 4.257 seconds (JVM running for 4.834)
+2021-09-22 01:25:53.456  INFO 23932 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/v2/api-docs?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	cache-control :max-age=0
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	sec-ch-ua-platform :"Windows"
+	upgrade-insecure-requests :1
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	accept :text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+	sec-fetch-site :none
+	sec-fetch-mode :navigate
+	sec-fetch-user :?1
+	sec-fetch-dest :document
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:26:36.453  INFO 23932 --- [http-nio-8080-exec-9] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-ui.html?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	sec-ch-ua-platform :"Windows"
+	upgrade-insecure-requests :1
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	accept :text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+	sec-fetch-site :none
+	sec-fetch-mode :navigate
+	sec-fetch-user :?1
+	sec-fetch-dest :document
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:26:36.588  INFO 23932 --- [http-nio-8080-exec-7] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/swagger-ui.css?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :text/css,*/*;q=0.1
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :style
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:26:36.589  INFO 23932 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/swagger-ui-standalone-preset.js?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :script
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:26:36.589  INFO 23932 --- [http-nio-8080-exec-10] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/swagger-ui-bundle.js?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :script
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:26:36.590  INFO 23932 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/springfox.js?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :script
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:26:36.588  INFO 23932 --- [http-nio-8080-exec-6] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :text/css,*/*;q=0.1
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :style
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:26:36.768  INFO 23932 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-resources/configuration/ui?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:26:36.786  INFO 23932 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Content-Type :application/json
+	Transfer-Encoding :chunked
+	Date :Tue, 21 Sep 2021 23:26:36 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:26:36.790  INFO 23932 --- [http-nio-8080-exec-8] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-resources/configuration/security?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:26:36.795  INFO 23932 --- [http-nio-8080-exec-8] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Content-Type :application/json
+	Transfer-Encoding :chunked
+	Date :Tue, 21 Sep 2021 23:26:36 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:26:36.798  INFO 23932 --- [http-nio-8080-exec-4] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-resources?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:26:36.803  INFO 23932 --- [http-nio-8080-exec-4] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Content-Type :application/json
+	Transfer-Encoding :chunked
+	Date :Tue, 21 Sep 2021 23:26:36 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:26:36.826  INFO 23932 --- [http-nio-8080-exec-5] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/v2/api-docs?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	accept :application/json,*/*
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:26:36.867  INFO 23932 --- [http-nio-8080-exec-9] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/titillium-web-v6-latin-700.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:26:37.040  INFO 23932 --- [http-nio-8080-exec-7] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/open-sans-v15-latin-700.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:26:37.040  INFO 23932 --- [http-nio-8080-exec-10] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/source-code-pro-v7-latin-300.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:26:37.040  INFO 23932 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/open-sans-v15-latin-regular.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:26:43.785  INFO 23932 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/source-code-pro-v7-latin-600.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:26:43.792  INFO 23932 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+	Last-Modified :Tue, 21 Sep 2021 23:08:12 GMT
+	Accept-Ranges :bytes
+	Content-Type :application/font-woff2
+	Content-Length :12956
+	Date :Tue, 21 Sep 2021 23:26:43 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:27:06.728  INFO 23932 --- [http-nio-8080-exec-9] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/titillium-web-v6-latin-regular.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:27:06.734  INFO 23932 --- [http-nio-8080-exec-9] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+	Last-Modified :Tue, 21 Sep 2021 23:08:12 GMT
+	Accept-Ranges :bytes
+	Content-Type :application/font-woff2
+	Content-Length :12264
+	Date :Tue, 21 Sep 2021 23:27:06 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:29:22.407  INFO 23328 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 23328 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-22 01:29:22.412 DEBUG 23328 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-22 01:29:22.412  INFO 23328 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-22 01:29:24.412  INFO 23328 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-22 01:29:24.755 DEBUG 23328 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-22 01:29:25.700  INFO 23328 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-22 01:29:26.133  INFO 23328 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 4.214 seconds (JVM running for 4.804)
+2021-09-22 01:29:29.553  INFO 23328 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-ui.html?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	cache-control :max-age=0
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	sec-ch-ua-platform :"Windows"
+	upgrade-insecure-requests :1
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	accept :text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+	sec-fetch-site :same-origin
+	sec-fetch-mode :navigate
+	sec-fetch-user :?1
+	sec-fetch-dest :document
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:29:29.597  INFO 23328 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/swagger-ui.css?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :text/css,*/*;q=0.1
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :style
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:29:29.598  INFO 23328 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :text/css,*/*;q=0.1
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :style
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:29:29.598  INFO 23328 --- [http-nio-8080-exec-4] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/swagger-ui-bundle.js?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :script
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:29:29.599  INFO 23328 --- [http-nio-8080-exec-5] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/swagger-ui-standalone-preset.js?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :script
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:29:29.600  INFO 23328 --- [http-nio-8080-exec-6] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/springfox.js?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :script
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:29:29.771  INFO 23328 --- [http-nio-8080-exec-7] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-resources/configuration/ui?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:29:29.773  INFO 23328 --- [http-nio-8080-exec-8] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/favicon-32x32.png?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	pragma :no-cache
+	cache-control :no-cache
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :image
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:29:29.790  INFO 23328 --- [http-nio-8080-exec-8] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+	Last-Modified :Tue, 21 Sep 2021 23:08:12 GMT
+	Accept-Ranges :bytes
+	Content-Type :image/png
+	Content-Length :1141
+	Date :Tue, 21 Sep 2021 23:29:29 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:29:29.833  INFO 23328 --- [http-nio-8080-exec-7] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Content-Type :application/json
+	Transfer-Encoding :chunked
+	Date :Tue, 21 Sep 2021 23:29:29 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:29:29.838  INFO 23328 --- [http-nio-8080-exec-9] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-resources/configuration/security?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:29:29.848  INFO 23328 --- [http-nio-8080-exec-9] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Content-Type :application/json
+	Transfer-Encoding :chunked
+	Date :Tue, 21 Sep 2021 23:29:29 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:29:29.852  INFO 23328 --- [http-nio-8080-exec-10] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-resources?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:29:29.858  INFO 23328 --- [http-nio-8080-exec-10] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Content-Type :application/json
+	Transfer-Encoding :chunked
+	Date :Tue, 21 Sep 2021 23:29:29 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:29:29.882  INFO 23328 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/v2/api-docs?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	accept :application/json,*/*
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:29:29.887  INFO 23328 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/titillium-web-v6-latin-700.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:29:30.157  INFO 23328 --- [http-nio-8080-exec-4] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/open-sans-v15-latin-700.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:29:30.157  INFO 23328 --- [http-nio-8080-exec-6] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/source-code-pro-v7-latin-300.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:29:30.157  INFO 23328 --- [http-nio-8080-exec-5] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/open-sans-v15-latin-regular.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:29:30.157  INFO 23328 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/source-code-pro-v7-latin-600.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:31:17.956  INFO 28332 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 28332 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-22 01:31:17.962 DEBUG 28332 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-22 01:31:17.962  INFO 28332 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-22 01:31:19.931  INFO 28332 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-22 01:31:20.285 DEBUG 28332 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-22 01:31:21.320  INFO 28332 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-22 01:31:21.698  INFO 28332 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 4.22 seconds (JVM running for 4.786)
+2021-09-22 01:31:23.919  INFO 28332 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-ui.html?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	cache-control :max-age=0
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	sec-ch-ua-platform :"Windows"
+	upgrade-insecure-requests :1
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	accept :text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+	sec-fetch-site :same-origin
+	sec-fetch-mode :navigate
+	sec-fetch-user :?1
+	sec-fetch-dest :document
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:31:24.108  INFO 28332 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-resources/configuration/ui?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:31:24.110  INFO 28332 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/favicon-32x32.png?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	pragma :no-cache
+	cache-control :no-cache
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :image
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:31:24.125  INFO 28332 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+	Last-Modified :Tue, 21 Sep 2021 23:08:12 GMT
+	Accept-Ranges :bytes
+	Content-Type :image/png
+	Content-Length :1141
+	Date :Tue, 21 Sep 2021 23:31:23 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:31:24.173  INFO 28332 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Content-Type :application/json
+	Transfer-Encoding :chunked
+	Date :Tue, 21 Sep 2021 23:31:23 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:31:24.177  INFO 28332 --- [http-nio-8080-exec-4] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-resources/configuration/security?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:31:24.187  INFO 28332 --- [http-nio-8080-exec-4] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Content-Type :application/json
+	Transfer-Encoding :chunked
+	Date :Tue, 21 Sep 2021 23:31:23 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:31:24.190  INFO 28332 --- [http-nio-8080-exec-5] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-resources?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:31:24.195  INFO 28332 --- [http-nio-8080-exec-5] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Content-Type :application/json
+	Transfer-Encoding :chunked
+	Date :Tue, 21 Sep 2021 23:31:23 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:31:24.218  INFO 28332 --- [http-nio-8080-exec-7] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/v2/api-docs?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	accept :application/json,*/*
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:31:44.500  INFO 28332 --- [http-nio-8080-exec-9] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/titillium-web-v6-latin-600.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:31:44.510  INFO 28332 --- [http-nio-8080-exec-9] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Vary :Origin
+	Vary :Origin
+	Vary :Origin
+	Last-Modified :Tue, 21 Sep 2021 23:08:12 GMT
+	Accept-Ranges :bytes
+	Content-Type :application/font-woff2
+	Content-Length :12148
+	Date :Tue, 21 Sep 2021 23:31:44 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:33:43.336  INFO 28332 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-ui.html?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	sec-ch-ua-platform :"Windows"
+	upgrade-insecure-requests :1
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	accept :text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+	sec-fetch-site :none
+	sec-fetch-mode :navigate
+	sec-fetch-user :?1
+	sec-fetch-dest :document
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:33:43.434  INFO 28332 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/swagger-ui.css?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :text/css,*/*;q=0.1
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :style
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:33:43.436  INFO 28332 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :text/css,*/*;q=0.1
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :style
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:33:43.437  INFO 28332 --- [http-nio-8080-exec-4] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/swagger-ui-bundle.js?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :script
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:33:43.439  INFO 28332 --- [http-nio-8080-exec-7] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/springfox.js?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :script
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:33:43.439  INFO 28332 --- [http-nio-8080-exec-5] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/swagger-ui-standalone-preset.js?v=2.8.0-SNAPSHOT
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :no-cors
+	sec-fetch-dest :script
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:33:43.608  INFO 28332 --- [http-nio-8080-exec-8] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-resources/configuration/ui?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:33:43.610  INFO 28332 --- [http-nio-8080-exec-8] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Content-Type :application/json
+	Transfer-Encoding :chunked
+	Date :Tue, 21 Sep 2021 23:33:43 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:33:43.616  INFO 28332 --- [http-nio-8080-exec-6] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-resources/configuration/security?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:33:43.619  INFO 28332 --- [http-nio-8080-exec-6] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Content-Type :application/json
+	Transfer-Encoding :chunked
+	Date :Tue, 21 Sep 2021 23:33:43 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:33:43.623  INFO 28332 --- [http-nio-8080-exec-9] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/swagger-resources?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:33:43.626  INFO 28332 --- [http-nio-8080-exec-9] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	Content-Type :application/json
+	Transfer-Encoding :chunked
+	Date :Tue, 21 Sep 2021 23:33:43 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
+2021-09-22 01:33:43.643  INFO 28332 --- [http-nio-8080-exec-10] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/v2/api-docs?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	accept :application/json,*/*
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :empty
+	referer :http://localhost:8080/swagger-ui.html
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+2021-09-22 01:33:43.690  INFO 28332 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/titillium-web-v6-latin-700.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:33:43.789  INFO 28332 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/open-sans-v15-latin-700.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:33:43.789  INFO 28332 --- [http-nio-8080-exec-4] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/source-code-pro-v7-latin-300.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:33:43.789  INFO 28332 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/open-sans-v15-latin-regular.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
+2021-09-22 01:33:59.848  INFO 28332 --- [http-nio-8080-exec-10] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/webjars/springfox-swagger-ui/fonts/source-code-pro-v7-latin-600.woff2?null
+HEADERS :
+	host :localhost:8080
+	connection :keep-alive
+	sec-ch-ua :"Microsoft Edge";v="93", " Not;A Brand";v="99", "Chromium";v="93"
+	origin :http://localhost:8080
+	sec-ch-ua-mobile :?0
+	user-agent :Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36 Edg/93.0.961.52
+	sec-ch-ua-platform :"Windows"
+	accept :*/*
+	sec-fetch-site :same-origin
+	sec-fetch-mode :cors
+	sec-fetch-dest :font
+	referer :http://localhost:8080/webjars/springfox-swagger-ui/springfox.css?v=2.8.0-SNAPSHOT
+	accept-encoding :gzip, deflate, br
+	accept-language :fr,fr-FR;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+	if-modified-since :Tue, 21 Sep 2021 23:08:12 GMT
