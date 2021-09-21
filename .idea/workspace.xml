@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:featureCreateDocumentationSwagger" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="552769b4-976a-4851-9b0b-5a696c0751b8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/safetynet/apiSafetyNet/configuration/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiSafetyNet.iml" beforeDir="false" afterPath="$PROJECT_DIR$/apiSafetyNet.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiSafetyNet.log" beforeDir="false" afterPath="$PROJECT_DIR$/apiSafetyNet.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lombok.config" beforeDir="false" afterPath="$PROJECT_DIR$/lombok.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/safetynet/apiSafetyNet/ApiSafetyNetApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/safetynet/apiSafetyNet/ApiSafetyNetApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/ApiSafetyNetApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/ApiSafetyNetApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/controller/PersonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/controller/PersonController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/Data/Inhabitant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/Data/Inhabitant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/Data/People.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/Data/People.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/Data/PeopleDetailed.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/Data/PeopleDetailed.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/InputData/FireStation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/InputData/FireStation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/InputData/MedicalRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/InputData/MedicalRecord.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/InputData/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/InputData/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/OutputData/AddressInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/OutputData/AddressInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/OutputData/ChildrenInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/OutputData/ChildrenInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/OutputData/HomeInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/OutputData/HomeInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/OutputData/InhabitantInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/OutputData/InhabitantInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/OutputData/PersonInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/safetynet/apiSafetyNet/model/OutputData/PersonInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/safetynet/apiSafetyNet/ApiSafetyNetApplicationTests.class" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/DenisSiveton/apiSafetyNet.git" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1sjC9rNHUNeUYsgY3xsh361VOy7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last.edited.regexp" value="06/31/2021" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.safetynet.apiSafetyNet.logger" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.safetynet.apiSafetyNet.service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\src\main\resources" />
+      <recent name="C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\src\test" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.safetynet.apiSafetyNet.logger" />
+      <recent name="com.safetynet.apiSafetyNet.service" />
+      <recent name="com.safetynet.apiSafetyNet.controller.integrationTests" />
+      <recent name="com.safetynet.apiSafetyNet.controller" />
+      <recent name="com.safetynet.apiSafetyNet.model.viewModel" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.safetynet.apiSafetyNet.exceptions" />
+      <recent name="com.safetynet.apiSafetyNet.model.viewModel" />
+      <recent name="com.safetynet.apiSafetyNet.service" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ApiSafetyNetApplication">
+    <configuration name="ApiSafetyNetApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.safetynet.apiSafetyNet.ApiSafetyNetApplication" />
+      <module name="apiSafetyNet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.safetynet.apiSafetyNet.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in apiSafetyNet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="apiSafetyNet" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FireStationControllerIT.testDeleteFireStation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="apiSafetyNet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.safetynet.apiSafetyNet.controller.integrationTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.safetynet.apiSafetyNet.controller.integrationTests" />
+      <option name="MAIN_CLASS_NAME" value="com.safetynet.apiSafetyNet.controller.integrationTests.FireStationControllerIT" />
+      <option name="METHOD_NAME" value="testDeleteFireStation" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FireStationServiceUnitTest.getInfoFromEachPersonFromAddressAndAppointedFireStationNumber_VerifyMethodIsCalledWithCorrectArgument" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="apiSafetyNet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.safetynet.apiSafetyNet.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.safetynet.apiSafetyNet.service" />
+      <option name="MAIN_CLASS_NAME" value="com.safetynet.apiSafetyNet.service.FireStationServiceUnitTest" />
+      <option name="METHOD_NAME" value="getInfoFromEachPersonFromAddressAndAppointedFireStationNumber_VerifyMethodIsCalledWithCorrectArgument" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PersonControllerUnitTest.testGetInfoFromPersonWithName_VerifyMethodIsCalledWithCorrectArgument" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="apiSafetyNet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.safetynet.apiSafetyNet.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.safetynet.apiSafetyNet.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.safetynet.apiSafetyNet.controller.PersonControllerUnitTest" />
+      <option name="METHOD_NAME" value="testGetInfoFromPersonWithName_VerifyMethodIsCalledWithCorrectArgument" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ApiSafetyNetApplication" />
+        <item itemvalue="JUnit.All in apiSafetyNet" />
+        <item itemvalue="JUnit.FireStationServiceUnitTest.getInfoFromEachPersonFromAddressAndAppointedFireStationNumber_VerifyMethodIsCalledWithCorrectArgument" />
+        <item itemvalue="JUnit.FireStationControllerIT.testDeleteFireStation" />
+        <item itemvalue="JUnit.PersonControllerUnitTest.testGetInfoFromPersonWithName_VerifyMethodIsCalledWithCorrectArgument" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="552769b4-976a-4851-9b0b-5a696c0751b8" name="Default Changelist" comment="" />
+      <created>1621376463047</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1621376463047</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="featureCreateDocumentationSwagger" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="COLUMN_WIDTH">
+                <map>
+                  <entry key="2" value="121" />
+                  <entry key="3" value="652" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="develop" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="featureRepositoryDevelopment" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="featureControllerTest" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="featureControllerStructuration" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="featureProjectStructuration" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="460" y="184" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1624443236244">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="2610" y="280" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1623425175470" />
+    <state x="460" y="184" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1280.689@0.0.1280.689" timestamp="1624443236244" />
+    <state x="2012" y="93" width="1736" height="880" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1630071462090">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2012" y="93" width="1736" height="880" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1630071462090" />
+    <state x="2579" y="327" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1632133095908">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2579" y="327" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1632133095908" />
+    <state x="2685" y="241" key="#com.intellij.ide.util.MemberChooser" timestamp="1632146317731">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="510" y="103" key="#com.intellij.ide.util.MemberChooser/0.0.1280.689/1920.0.1920.1050@0.0.1280.689" timestamp="1632132737122" />
+    <state x="2685" y="241" key="#com.intellij.ide.util.MemberChooser/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1632146317731" />
+    <state x="510" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1280.689@0.0.1280.689" timestamp="1624445175637" />
+    <state x="2288" y="449" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1624640810076">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2288" y="449" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1624640810076" />
+    <state x="2671" y="406" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1624640812285">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2671" y="406" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1624640812285" />
+    <state x="2610" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1625841027529">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2610" y="272" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1625841027529" />
+    <state x="2627" y="234" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1632146634454">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2627" y="234" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1632146634454" />
+    <state width="1877" height="449" key="GridCell.Tab.0.bottom" timestamp="1632267284382">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1237" height="395" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.0.1920.1050@0.0.1280.689" timestamp="1632169982372" />
+    <state width="1877" height="449" key="GridCell.Tab.0.bottom/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1632267284382" />
+    <state width="1877" height="449" key="GridCell.Tab.0.center" timestamp="1632267284382">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1237" height="395" key="GridCell.Tab.0.center/0.0.1280.689/1920.0.1920.1050@0.0.1280.689" timestamp="1632169982372" />
+    <state width="1877" height="449" key="GridCell.Tab.0.center/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1632267284382" />
+    <state width="1877" height="449" key="GridCell.Tab.0.left" timestamp="1632267284382">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1237" height="395" key="GridCell.Tab.0.left/0.0.1280.689/1920.0.1920.1050@0.0.1280.689" timestamp="1632169982371" />
+    <state width="1877" height="449" key="GridCell.Tab.0.left/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1632267284382" />
+    <state width="1877" height="449" key="GridCell.Tab.0.right" timestamp="1632267284382">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1237" height="395" key="GridCell.Tab.0.right/0.0.1280.689/1920.0.1920.1050@0.0.1280.689" timestamp="1632169982372" />
+    <state width="1877" height="449" key="GridCell.Tab.0.right/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1632267284382" />
+    <state width="1877" height="532" key="GridCell.Tab.1.bottom" timestamp="1632135180122">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="532" key="GridCell.Tab.1.bottom/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1632135180122" />
+    <state width="1877" height="532" key="GridCell.Tab.1.center" timestamp="1632135180122">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="532" key="GridCell.Tab.1.center/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1632135180122" />
+    <state width="1877" height="532" key="GridCell.Tab.1.left" timestamp="1632135180121">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="532" key="GridCell.Tab.1.left/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1632135180121" />
+    <state width="1877" height="532" key="GridCell.Tab.1.right" timestamp="1632135180122">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="532" key="GridCell.Tab.1.right/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1632135180122" />
+    <state x="2410" y="180" key="Maven.ArtifactSearchDialog" timestamp="1632127996164">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2410" y="180" key="Maven.ArtifactSearchDialog/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1632127996164" />
+    <state x="2695" y="459" key="ReplaceDuplicatesPrompt" timestamp="1625829961506">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2695" y="459" key="ReplaceDuplicatesPrompt/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1625829961506" />
+    <state x="2381" y="170" key="SettingsEditor" timestamp="1632146574130">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2381" y="170" key="SettingsEditor/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1632146574130" />
+    <state x="2325" y="444" width="540" height="496" key="extract.method.dialog" timestamp="1625829959090">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2325" y="444" width="540" height="496" key="extract.method.dialog/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1625829959090" />
+    <state x="2675" y="272" key="refactoring.ChangeSignatureDialog" timestamp="1631276780201">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2675" y="272" key="refactoring.ChangeSignatureDialog/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1631276780201" />
+    <state x="2543" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1632146656513">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2543" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1280.689/1920.0.1920.1050@1920.0.1920.1050" timestamp="1632146656513" />
+    <state x="415" y="149" width="672" height="445" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1624442256451" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/safetynet/apiSafetyNet/service/management/HomeInfoManagementUnitTest.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/apiSafetyNet$PersonControllerTest.ic" NAME="PersonControllerTest Coverage Results" MODIFIED="1622399117324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.safetynet.apiSafetyNet.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apiSafetyNet$com_safetynet_apiSafetyNet_controller_in_apiSafetyNet.ic" NAME="com.safetynet.apiSafetyNet.controller in apiSafetyNet Coverage Results" MODIFIED="1622825132505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.safetynet.apiSafetyNet.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/apiSafetyNet$All_in_apiSafetyNet.ic" NAME="All in apiSafetyNet Coverage Results" MODIFIED="1632264362242" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

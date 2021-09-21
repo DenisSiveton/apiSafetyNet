@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MedicalRecordCRUD.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">apiSafetyNet</a> &gt; <a href="index.source.html" class="el_package">com.safetynet.apiSafetyNet.repository</a> &gt; <span class="el_source">MedicalRecordCRUD.java</span></div><h1>MedicalRecordCRUD.java</h1><pre class="source lang-java linenums">package com.safetynet.apiSafetyNet.repository;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.jsoniter.JsonIterator;
+import com.safetynet.apiSafetyNet.model.InputData.FireStation;
+import com.safetynet.apiSafetyNet.model.InputData.MedicalRecord;
+import lombok.Data;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
+@Data
+@Repository
+public class MedicalRecordCRUD {
+
+    @Value(&quot;${safetynet.path-data}&quot;)
+    private String pathData;
+
+<span class="fc" id="L29">    public MedicalRecordCRUD() {</span>
+<span class="fc" id="L30">    }</span>
+
+<span class="nc" id="L32">    public MedicalRecordCRUD(String pathData) {</span>
+<span class="nc" id="L33">        this.pathData = pathData;</span>
+<span class="nc" id="L34">    }</span>
+
+    /**
+     *
+     * This method retrieves the list of Medical Records from the Database,
+     * adds the new Medical Record and updates the Database.
+     *
+     * @see MedicalRecord
+     *
+     * @param medicalRecord the new Medical Record to be added.
+     * @return the new added Medical Record.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public MedicalRecord addMedicalRecord(MedicalRecord medicalRecord) {
+        //Create new medicalRecord JSONObject from a medicalRecord JAVAObject
+<span class="fc" id="L51">        JSONObject medicalRecordToAdd = getJsonObject(medicalRecord);</span>
+
+<span class="fc" id="L53">        JSONParser jsonP = new JSONParser();</span>
+        try {
+<span class="fc" id="L55">            JSONObject jsonO = (JSONObject) jsonP.parse(new FileReader(pathData));</span>
+
+            // Get all MedicalRecords from JSON file*
+<span class="fc" id="L58">            JSONArray medicalRecords = (JSONArray) jsonO.get(&quot;medicalrecords&quot;);</span>
+
+            //Add new medicalRecord to the JSONArray list *
+<span class="fc" id="L61">            medicalRecords.add(medicalRecordToAdd);</span>
+<span class="fc" id="L62">            jsonO.put(&quot;medicalrecords&quot;, medicalRecords);</span>
+
+            //Write the updated list in the json file *
+<span class="fc" id="L65">            writeInFile(jsonO);</span>
+<span class="nc" id="L66">        } catch (ParseException | IOException e) {</span>
+<span class="nc" id="L67">            e.printStackTrace();</span>
+<span class="fc" id="L68">        }</span>
+<span class="fc" id="L69">        return medicalRecord;</span>
+    }
+
+    /**
+     *
+     * This method retrieves the list of Medical Records from the Database,
+     * searches for the given Medical Record, updates it and updates the Database.
+     *
+     * @see MedicalRecord
+     *
+     * @param medicalRecord the Medical Record to update.
+     * @return the updated Medical Record or NULL if the given Medical Record wasn't found in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public MedicalRecord modifyInfoMedicalRecord(MedicalRecord medicalRecord) {
+<span class="fc" id="L86">        JSONParser jsonP = new JSONParser();</span>
+<span class="fc" id="L87">        MedicalRecord result = null;</span>
+        try {
+<span class="fc" id="L89">            JSONObject jsonO = (JSONObject) jsonP.parse(new FileReader(pathData));</span>
+
+            //Get all Person from JSON file
+<span class="fc" id="L92">            ArrayList&lt;MedicalRecord&gt; medicalRecordList = getAllMedicalRecords(jsonO);</span>
+
+<span class="fc" id="L94">            boolean isMedicalRecordPresent = false;</span>
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">            for(int i =0; i&lt;medicalRecordList.size();i++) {</span>
+<span class="pc bpc" id="L96" title="2 of 4 branches missed.">                if (medicalRecordList.get(i).getFirstName().equals(medicalRecord.getFirstName()) &amp;&amp; medicalRecordList.get(i).getLastName().equals(medicalRecord.getLastName())) {</span>
+<span class="fc" id="L97">                    isMedicalRecordPresent = true;</span>
+<span class="fc" id="L98">                    medicalRecordList.remove(i);</span>
+<span class="fc" id="L99">                    medicalRecordList.add(i, medicalRecord);</span>
+<span class="fc" id="L100">                    break;</span>
+                }
+            }
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">            if (isMedicalRecordPresent){</span>
+<span class="fc" id="L104">                JsonArray personListUpdated = new Gson().toJsonTree(medicalRecordList).getAsJsonArray();</span>
+<span class="fc" id="L105">                jsonO.put(&quot;medicalrecords&quot;, personListUpdated);</span>
+<span class="fc" id="L106">                writeInFile(jsonO);</span>
+<span class="fc" id="L107">                result = medicalRecord;</span>
+            }
+<span class="nc" id="L109">        } catch (ParseException e) {</span>
+<span class="nc" id="L110">            e.printStackTrace();</span>
+<span class="nc" id="L111">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L112">            e.printStackTrace();</span>
+<span class="nc" id="L113">        } catch (IOException e) {</span>
+<span class="nc" id="L114">            e.printStackTrace();</span>
+<span class="pc" id="L115">        }</span>
+<span class="fc" id="L116">        return result;</span>
+    }
+
+    /**
+     *
+     * This method retrieves the list of Medical Records from the Database,
+     * searches for the given Medical Record, deletes it and updates the Database.
+     *
+     * @see MedicalRecord
+     *
+     * @param medicalRecord the Medical Record to delete.
+     * @return the deleted Medical Record or NULL if the given fire station wasn't found in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public MedicalRecord deleteMedicalRecord(MedicalRecord medicalRecord) {
+<span class="fc" id="L133">        MedicalRecord medicalRecordToDelete = null;</span>
+<span class="fc" id="L134">        JSONParser jsonP = new JSONParser();</span>
+        try {
+<span class="fc" id="L136">            JSONObject jsonO = (JSONObject) jsonP.parse(new FileReader(pathData));</span>
+
+            //Get all Person from JSON file
+<span class="fc" id="L139">            ArrayList&lt;MedicalRecord&gt; medicalRecordList = getAllMedicalRecords(jsonO);</span>
+
+<span class="fc" id="L141">            boolean isMedicalRecordToModifyPresent = false;</span>
+<span class="pc bpc" id="L142" title="1 of 2 branches missed.">            for(int i =0; i&lt;medicalRecordList.size();i++) {</span>
+<span class="pc bpc" id="L143" title="2 of 4 branches missed.">                if (medicalRecordList.get(i).getFirstName().equals(medicalRecord.getFirstName()) &amp;&amp; medicalRecordList.get(i).getLastName().equals(medicalRecord.getLastName())) {</span>
+<span class="fc" id="L144">                    isMedicalRecordToModifyPresent = true;</span>
+<span class="fc" id="L145">                    medicalRecordToDelete = medicalRecordList.get(i);</span>
+<span class="fc" id="L146">                    medicalRecordList.remove(i);</span>
+<span class="fc" id="L147">                    break;</span>
+                }
+            }
+<span class="pc bpc" id="L150" title="1 of 2 branches missed.">            if (isMedicalRecordToModifyPresent){</span>
+<span class="fc" id="L151">                JsonArray medicalReccordListUpdated = new Gson().toJsonTree(medicalRecordList).getAsJsonArray();</span>
+<span class="fc" id="L152">                jsonO.put(&quot;medicalrecords&quot;, medicalReccordListUpdated);</span>
+<span class="fc" id="L153">                writeInFile(jsonO);</span>
+            }
+<span class="nc" id="L155">        } catch (ParseException e) {</span>
+<span class="nc" id="L156">            e.printStackTrace();</span>
+<span class="nc" id="L157">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L158">            e.printStackTrace();</span>
+<span class="nc" id="L159">        } catch (IOException e) {</span>
+<span class="nc" id="L160">            e.printStackTrace();</span>
+<span class="pc" id="L161">        }</span>
+<span class="fc" id="L162">        return medicalRecordToDelete;</span>
+    }
+
+    /**
+     *
+     * This method returns the list of all the Medical Records stored in the Database.
+     *
+     * @see MedicalRecord
+     *
+     * @param jsonO the JSONObject containing all the data.
+     * @return the list of all the Medical Records in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public ArrayList&lt;MedicalRecord&gt; getAllMedicalRecords(JSONObject jsonO) {
+<span class="fc" id="L178">        ArrayList&lt;MedicalRecord&gt; medicalRecordListJSON = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L179">        JSONArray medicalRecords = (JSONArray) jsonO.get(&quot;medicalrecords&quot;);</span>
+<span class="fc bfc" id="L180" title="All 2 branches covered.">        for(int i = 0; i&lt;medicalRecords.size(); i++) {</span>
+<span class="fc" id="L181">            String medicalRecordToString = medicalRecords.get(i).toString();</span>
+
+<span class="fc" id="L183">            MedicalRecord med = JsonIterator.deserialize(medicalRecordToString, MedicalRecord.class);</span>
+<span class="fc" id="L184">            String birthDate = medicalRecordToString.substring(medicalRecordToString.indexOf(&quot;birthdate&quot;)+12, medicalRecordToString.indexOf(&quot;birthdate&quot;)+14)+</span>
+<span class="fc" id="L185">                    medicalRecordToString.substring(medicalRecordToString.indexOf(&quot;birthdate&quot;)+15, medicalRecordToString.indexOf(&quot;birthdate&quot;)+18)+</span>
+<span class="fc" id="L186">                    medicalRecordToString.substring(medicalRecordToString.indexOf(&quot;birthdate&quot;)+19, medicalRecordToString.indexOf(&quot;birthdate&quot;)+24) ;</span>
+<span class="fc" id="L187">            med.setBirthDate(birthDate);</span>
+<span class="fc" id="L188">            medicalRecordListJSON.add(med);</span>
+        }
+<span class="fc" id="L190">        return medicalRecordListJSON;</span>
+    }
+
+    private JSONObject getJsonObject(MedicalRecord medicalRecord) {
+<span class="fc" id="L194">        JSONObject medicalRecordToAddToJSONFile = new JSONObject();</span>
+<span class="fc" id="L195">        medicalRecordToAddToJSONFile.put(&quot;firstName&quot;, medicalRecord.getFirstName());</span>
+<span class="fc" id="L196">        medicalRecordToAddToJSONFile.put(&quot;lastName&quot;, medicalRecord.getLastName());</span>
+<span class="fc" id="L197">        medicalRecordToAddToJSONFile.put(&quot;birthdate&quot;, medicalRecord.getBirthDate());</span>
+<span class="fc" id="L198">        medicalRecordToAddToJSONFile.put(&quot;allergies&quot;, new Gson().toJsonTree(medicalRecord.getAllergies()).getAsJsonArray());</span>
+<span class="fc" id="L199">        medicalRecordToAddToJSONFile.put(&quot;medications&quot;, new Gson().toJsonTree(medicalRecord.getMedications()).getAsJsonArray());</span>
+<span class="fc" id="L200">        return medicalRecordToAddToJSONFile;</span>
+    }
+
+    private void writeInFile(JSONObject jsonO) throws IOException {
+<span class="fc" id="L204">        String jsonObjectToString = String.valueOf(jsonO);</span>
+<span class="fc" id="L205">        FileWriter file = new FileWriter(pathData);</span>
+<span class="fc" id="L206">        file.write(jsonObjectToString.replace(&quot;\\&quot;, &quot;&quot;));</span>
+<span class="fc" id="L207">        file.flush();</span>
+<span class="fc" id="L208">    }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

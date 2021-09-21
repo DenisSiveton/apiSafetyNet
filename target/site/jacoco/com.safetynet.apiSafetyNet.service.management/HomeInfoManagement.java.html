@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HomeInfoManagement.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">apiSafetyNet</a> &gt; <a href="index.source.html" class="el_package">com.safetynet.apiSafetyNet.service.management</a> &gt; <span class="el_source">HomeInfoManagement.java</span></div><h1>HomeInfoManagement.java</h1><pre class="source lang-java linenums">package com.safetynet.apiSafetyNet.service.management;
+
+import com.safetynet.apiSafetyNet.model.Data.PeopleDetailed;
+import com.safetynet.apiSafetyNet.model.InputData.MedicalRecord;
+import com.safetynet.apiSafetyNet.model.InputData.Person;
+import com.safetynet.apiSafetyNet.model.OutputData.AddressInfo;
+import com.safetynet.apiSafetyNet.model.OutputData.HomeInfo;
+import lombok.Data;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+
+
+@Service
+public class HomeInfoManagement {
+
+    private MedicalRecordManagement medicalRecordManagement;
+    private PersonManagement personManagement;
+
+<span class="fc" id="L20">    public HomeInfoManagement(MedicalRecordManagement medicalRecordManagement, PersonManagement personManagement) {</span>
+<span class="fc" id="L21">        this.medicalRecordManagement = medicalRecordManagement;</span>
+<span class="fc" id="L22">        this.personManagement = personManagement;</span>
+<span class="fc" id="L23">    }</span>
+
+    /**
+     *
+     * This method fills the list of HomeInfo with the data based on list of the FireStation's number.
+     *
+     * @see AddressInfo
+     * @see PeopleDetailed
+     * @see FireStationManagement#addAddressesToListForEachStationNumber(ArrayList, ArrayList)
+     *
+     * @param stations the list of the FireStation's number.
+     * @param homesInfo the object of the request that needs to be filled.
+     * @param addressListByFireStationNumber the list of lists of addresses created by the method :&quot;addAddressesToListForEachStationNumber&quot;.
+     * @param personListJSON the list of all the Person from the Data.
+     * @param medicalRecordListJSON the list of all the MedicalRecord from the Data.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public void createHomeInfoListBasedOnAddressList(ArrayList&lt;String&gt; stations, ArrayList&lt;HomeInfo&gt; homesInfo, ArrayList&lt;ArrayList&lt;String&gt;&gt; addressListByFireStationNumber, ArrayList&lt;Person&gt; personListJSON, ArrayList&lt;MedicalRecord&gt; medicalRecordListJSON) {
+
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        for(int i =0; i&lt;stations.size();i++){</span>
+            // for each station, we run through the relevant list of address
+<span class="fc" id="L46">            ArrayList&lt;String&gt; addressList = addressListByFireStationNumber.get(i);</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">            for(String address : addressList){</span>
+<span class="fc" id="L48">                ArrayList&lt;PeopleDetailed&gt; peopleInHouse = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">                for(Person person : personListJSON) {</span>
+                    //for each person, if it lives at the current address then it's added to the peopleInHouse data
+<span class="fc bfc" id="L51" title="All 2 branches covered.">                    if (person.getAddress().equals(address)){</span>
+<span class="fc" id="L52">                        MedicalRecord medicalRecordPerson = medicalRecordManagement.getMedicalRecord(person.getFirstName(), person.getLastName(), medicalRecordListJSON);</span>
+<span class="fc" id="L53">                        peopleInHouse.add(new PeopleDetailed(person.getLastName(), person.getPhone(), personManagement.getAgeFromPerson(medicalRecordPerson), medicalRecordPerson.getMedications(), medicalRecordPerson.getAllergies()));</span>
+                    }
+<span class="fc" id="L55">                }</span>
+<span class="fc" id="L56">                homesInfo.add(new HomeInfo(address, peopleInHouse));</span>
+<span class="fc" id="L57">            }</span>
+        }
+<span class="fc" id="L59">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

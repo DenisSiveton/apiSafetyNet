@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PersonCRUD.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">apiSafetyNet</a> &gt; <a href="index.source.html" class="el_package">com.safetynet.apiSafetyNet.repository</a> &gt; <span class="el_source">PersonCRUD.java</span></div><h1>PersonCRUD.java</h1><pre class="source lang-java linenums">package com.safetynet.apiSafetyNet.repository;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.jsoniter.JsonIterator;
+import com.safetynet.apiSafetyNet.model.InputData.FireStation;
+import com.safetynet.apiSafetyNet.model.InputData.MedicalRecord;
+import com.safetynet.apiSafetyNet.model.InputData.Person;
+import lombok.Data;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
+@Data
+@Repository
+public class PersonCRUD {
+
+    @Value(&quot;${safetynet.path-data}&quot;)
+    private String pathData;
+
+<span class="fc" id="L29">    public PersonCRUD() {</span>
+<span class="fc" id="L30">    }</span>
+
+<span class="nc" id="L32">    public PersonCRUD(String pathData) {</span>
+<span class="nc" id="L33">        this.pathData = pathData;</span>
+<span class="nc" id="L34">    }</span>
+
+    /**
+     *
+     * This method retrieves the list of persons from the Database,
+     * adds the new person and updates the Database.
+     *
+     * @see Person
+     *
+     * @param person the new person to be added.
+     * @return the new added person.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public Person addPerson(Person person){
+
+<span class="fc" id="L51">        JSONObject personToAddToJSON = new JSONObject();</span>
+<span class="fc" id="L52">        personToAddToJSON.put(&quot;firstName&quot;, person.getFirstName());</span>
+<span class="fc" id="L53">        personToAddToJSON.put(&quot;lastName&quot;, person.getLastName());</span>
+<span class="fc" id="L54">        personToAddToJSON.put(&quot;address&quot;, person.getAddress());</span>
+<span class="fc" id="L55">        personToAddToJSON.put(&quot;city&quot;, person.getCity());</span>
+<span class="fc" id="L56">        personToAddToJSON.put(&quot;zip&quot;, person.getZip());</span>
+<span class="fc" id="L57">        personToAddToJSON.put(&quot;phone&quot;, person.getPhone());</span>
+<span class="fc" id="L58">        personToAddToJSON.put(&quot;email&quot;, person.getEmail());</span>
+
+<span class="fc" id="L60">        JSONParser jsonP = new JSONParser();</span>
+        try {
+<span class="fc" id="L62">            JSONObject jsonO = (JSONObject) jsonP.parse(new FileReader(pathData));</span>
+
+            //Get all Person from JSON file
+<span class="fc" id="L65">            JSONArray persons = (JSONArray) jsonO.get(&quot;persons&quot;);</span>
+
+
+<span class="fc" id="L68">            persons.add(personToAddToJSON);</span>
+<span class="fc" id="L69">            jsonO.put(&quot;persons&quot;, persons);</span>
+<span class="fc" id="L70">            writeInFile(jsonO);</span>
+<span class="nc" id="L71">        } catch (IOException | ParseException e) {</span>
+<span class="nc" id="L72">            e.printStackTrace();</span>
+<span class="fc" id="L73">        }</span>
+<span class="fc" id="L74">        return person;</span>
+    }
+
+    /**
+     *
+     * This method retrieves the list of persons from the Database,
+     * searches for the given person, updates it and updates the Database.
+     *
+     * @see Person
+     *
+     * @param person the person to update.
+     * @return the updated person or NULL if the given person wasn't found in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public Person modifyInfoPerson(Person person) {
+<span class="fc" id="L91">        JSONParser jsonP = new JSONParser();</span>
+<span class="fc" id="L92">        Person result = null;</span>
+        try {
+<span class="fc" id="L94">            JSONObject jsonO = (JSONObject) jsonP.parse(new FileReader(pathData));</span>
+
+            //Get all Person from JSON file
+<span class="fc" id="L97">            ArrayList&lt;Person&gt; personList = getPersonsFromJSONFile(jsonO);</span>
+
+<span class="fc" id="L99">            boolean isPersonToModifyPresent = false;</span>
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">            for(int i =0; i&lt;personList.size();i++) {</span>
+<span class="pc bpc" id="L101" title="2 of 4 branches missed.">                if (personList.get(i).getFirstName().equals(person.getFirstName()) &amp;&amp; personList.get(i).getLastName().equals(person.getLastName())) {</span>
+<span class="fc" id="L102">                    isPersonToModifyPresent = true;</span>
+<span class="fc" id="L103">                    personList.remove(i);</span>
+<span class="fc" id="L104">                    personList.add(i, person);</span>
+<span class="fc" id="L105">                    break;</span>
+                }
+            }
+<span class="pc bpc" id="L108" title="1 of 2 branches missed.">            if (isPersonToModifyPresent){</span>
+<span class="fc" id="L109">                JsonArray personListUpdated = new Gson().toJsonTree(personList).getAsJsonArray();</span>
+<span class="fc" id="L110">                jsonO.put(&quot;persons&quot;, personListUpdated);</span>
+<span class="fc" id="L111">                writeInFile(jsonO);</span>
+<span class="fc" id="L112">                result = person;</span>
+            }
+<span class="nc" id="L114">            } catch (ParseException e) {</span>
+<span class="nc" id="L115">            e.printStackTrace();</span>
+<span class="nc" id="L116">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L117">            e.printStackTrace();</span>
+<span class="nc" id="L118">        } catch (IOException e) {</span>
+<span class="nc" id="L119">            e.printStackTrace();</span>
+<span class="pc" id="L120">        }</span>
+<span class="fc" id="L121">        return result;</span>
+    }
+
+    /**
+     *
+     * This method retrieves the list of persons from the Database,
+     * searches for the given person, deletes it and updates the Database.
+     *
+     * @see Person
+     *
+     * @param person the person to delete.
+     * @return the deleted person or NULL if the given person wasn't found in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public Person deletePerson(Person person)
+    {
+<span class="fc" id="L139">        JSONParser jsonP = new JSONParser();</span>
+<span class="fc" id="L140">        Person deletedPerson = null;</span>
+        try {
+<span class="fc" id="L142">            JSONObject jsonO = (JSONObject) jsonP.parse(new FileReader(pathData));</span>
+
+            //Get all Person from JSON file
+<span class="fc" id="L145">            ArrayList&lt;Person&gt; personList = getPersonsFromJSONFile(jsonO);</span>
+
+<span class="fc" id="L147">            boolean isPersonToDeletePresent = false;</span>
+<span class="pc bpc" id="L148" title="1 of 2 branches missed.">            for(int i =0; i&lt;personList.size();i++) {</span>
+<span class="pc bpc" id="L149" title="2 of 4 branches missed.">                if (personList.get(i).getFirstName().equals(person.getFirstName()) &amp;&amp; personList.get(i).getLastName().equals(person.getLastName())) {</span>
+<span class="fc" id="L150">                    isPersonToDeletePresent = true;</span>
+<span class="fc" id="L151">                    deletedPerson = personList.get(i);</span>
+<span class="fc" id="L152">                    personList.remove(i);</span>
+<span class="fc" id="L153">                    break;</span>
+                }
+            }
+<span class="pc bpc" id="L156" title="1 of 2 branches missed.">            if (isPersonToDeletePresent){</span>
+<span class="fc" id="L157">                JsonArray personListUpdated = new Gson().toJsonTree(personList).getAsJsonArray();</span>
+<span class="fc" id="L158">                jsonO.put(&quot;persons&quot;, personListUpdated);</span>
+<span class="fc" id="L159">                writeInFile(jsonO);</span>
+            }
+<span class="nc" id="L161">        } catch (ParseException e) {</span>
+<span class="nc" id="L162">            e.printStackTrace();</span>
+<span class="nc" id="L163">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L164">            e.printStackTrace();</span>
+<span class="nc" id="L165">        } catch (IOException e) {</span>
+<span class="nc" id="L166">            e.printStackTrace();</span>
+<span class="pc" id="L167">        }</span>
+<span class="fc" id="L168">        return deletedPerson;</span>
+    }
+
+    /**
+     *
+     * This method returns the list of all the persons stored in the Database.
+     *
+     * @see Person
+     *
+     * @param jsonO the JSONObject containing all the data.
+     * @return the list of all the persons in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public ArrayList&lt;Person&gt; getPersonsFromJSONFile(JSONObject jsonO) {
+<span class="fc" id="L184">        ArrayList&lt;Person&gt; personListJSON = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L185">        JSONArray persons = (JSONArray) jsonO.get(&quot;persons&quot;);</span>
+<span class="fc bfc" id="L186" title="All 2 branches covered.">        for(Object o : persons) {</span>
+<span class="fc" id="L187">            personListJSON.add(JsonIterator.deserialize(o.toString(), Person.class));</span>
+<span class="fc" id="L188">        }</span>
+<span class="fc" id="L189">        return personListJSON;</span>
+    }
+
+    private void writeInFile(JSONObject jsonO) throws IOException {
+<span class="fc" id="L193">        String jsonObjectToString = String.valueOf(jsonO);</span>
+<span class="fc" id="L194">        FileWriter file = new FileWriter(pathData);</span>
+<span class="fc" id="L195">        file.write(jsonObjectToString.replace(&quot;\\&quot;, &quot;&quot;));</span>
+<span class="fc" id="L196">        file.flush();</span>
+<span class="fc" id="L197">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

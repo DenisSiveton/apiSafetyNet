@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InhabitantManagement.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">apiSafetyNet</a> &gt; <a href="index.source.html" class="el_package">com.safetynet.apiSafetyNet.service.management</a> &gt; <span class="el_source">InhabitantManagement.java</span></div><h1>InhabitantManagement.java</h1><pre class="source lang-java linenums">package com.safetynet.apiSafetyNet.service.management;
+
+import com.safetynet.apiSafetyNet.model.Data.Inhabitant;
+import com.safetynet.apiSafetyNet.model.InputData.MedicalRecord;
+import com.safetynet.apiSafetyNet.model.InputData.Person;
+import com.safetynet.apiSafetyNet.model.OutputData.ChildrenInfo;
+import com.safetynet.apiSafetyNet.model.OutputData.InhabitantInfo;
+import lombok.Data;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+
+@Service
+public class InhabitantManagement {
+    private PersonManagement personManagement;
+
+<span class="fc" id="L17">    public InhabitantManagement(PersonManagement personManagement) {</span>
+<span class="fc" id="L18">        this.personManagement = personManagement;</span>
+<span class="fc" id="L19">    }</span>
+
+    /**
+     *
+     * This method calculates the amount of adults and children by calculating their age then it updates the data of InhabitantInfo.
+     *
+     * @see InhabitantInfo
+     * @see MedicalRecord
+     * @see PersonManagement#getAgeFromPerson(MedicalRecord) 
+     *
+     * @param inhabitantInfo the object that will be returned to the user.
+     * @param medicalRecords the list of MedicalRecords.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public void calculateNumberOfAdultsAndChildrenInInhabitants(InhabitantInfo inhabitantInfo, ArrayList&lt;MedicalRecord&gt; medicalRecords) {
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        for(MedicalRecord medicalRecord : medicalRecords){</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">            for(Inhabitant inhabitant :inhabitantInfo.getInhabitants()){</span>
+<span class="fc bfc" id="L38" title="All 4 branches covered.">                if (inhabitant.getLastName().equals(medicalRecord.getLastName()) &amp;&amp; inhabitant.getFirstName().equals(medicalRecord.getFirstName())){</span>
+<span class="fc" id="L39">                    int ageInhabitant = personManagement.getAgeFromPerson(medicalRecord);</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">                    if(ageInhabitant&gt;18){</span>
+<span class="fc" id="L41">                        inhabitantInfo.setNumberOfAdults(inhabitantInfo.getNumberOfAdults()+1);</span>
+                    }
+                    else {
+<span class="fc" id="L44">                        inhabitantInfo.setNumberOfChildren((inhabitantInfo.getNumberOfChildren()+1));</span>
+                    }
+                }
+<span class="fc" id="L47">            }</span>
+<span class="fc" id="L48">        }</span>
+<span class="fc" id="L49">    }</span>
+
+    /**
+     *
+     * This method creates all the inhabitants and adds them to the InhabitantInfo data.
+     *
+     * @see InhabitantInfo
+     * @see Inhabitant
+     * @see Person
+     *
+     * @param inhabitantInfo the object that will be returned to the user.
+     * @param persons the list of all the Persons.
+     * @param addresses a list of address.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public void createInhabitantsWithAddressList(InhabitantInfo inhabitantInfo, ArrayList&lt;Person&gt; persons, ArrayList&lt;String&gt; addresses) {
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        for(Person person : persons){</span>
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">            if(addresses.contains(person.getAddress())){</span>
+<span class="fc" id="L69">                inhabitantInfo.getInhabitants().add(new Inhabitant(person.getFirstName(), person.getLastName(),person.getAddress(), person.getPhone()));</span>
+            }
+<span class="fc" id="L71">        }</span>
+<span class="fc" id="L72">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
