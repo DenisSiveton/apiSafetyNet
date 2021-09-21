@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MedicalRecordService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">apiSafetyNet</a> &gt; <a href="index.source.html" class="el_package">com.safetynet.apiSafetyNet.service</a> &gt; <span class="el_source">MedicalRecordService.java</span></div><h1>MedicalRecordService.java</h1><pre class="source lang-java linenums">package com.safetynet.apiSafetyNet.service;
+
+import com.safetynet.apiSafetyNet.model.Data.PeopleDetailed;
+import com.safetynet.apiSafetyNet.model.InputData.MedicalRecord;
+import com.safetynet.apiSafetyNet.model.OutputData.HomeInfo;
+import com.safetynet.apiSafetyNet.repository.MedicalRecordCRUD;
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MedicalRecordService {
+<span class="fc" id="L13">    public MedicalRecordService() {</span>
+<span class="fc" id="L14">    }</span>
+    @Autowired
+    private MedicalRecordCRUD medicalRecordCRUD;
+
+
+<span class="fc" id="L19">    public MedicalRecordService(MedicalRecordCRUD medicalRecordCRUD) {</span>
+<span class="fc" id="L20">        this.medicalRecordCRUD = medicalRecordCRUD;</span>
+<span class="fc" id="L21">    }</span>
+
+    /**
+     *
+     * This method adds a new Medical Record to the Database.
+     *
+     * @see MedicalRecord
+     *
+     * @param medicalRecord the new Medical Record to be added in the Database.
+     * @return the new added Medical Record.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public MedicalRecord addMedicalRecord(MedicalRecord medicalRecord) {
+<span class="fc" id="L36">        return medicalRecordCRUD.addMedicalRecord(medicalRecord);</span>
+    }
+
+    /**
+     *
+     * This method updates a Medical Record from the Database.
+     *
+     * @see MedicalRecord
+     *
+     * @param medicalRecord the Medical Record with the up to date in the Database.
+     * @return the updated Medical Record or NULL if the Medical Record wasn't found in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public MedicalRecord modifyInfoMedicalRecord(MedicalRecord medicalRecord) {
+<span class="fc" id="L52">        return medicalRecordCRUD.modifyInfoMedicalRecord(medicalRecord);</span>
+    }
+
+    /**
+     *
+     * This method deletes a Medical Record from the Database.
+     *
+     * @see MedicalRecord
+     *
+     * @param medicalRecord the Medical Record to be deleted from the Database.
+     * @return the deleted Medical Record or NULL if the Medical Record wasn't found in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public MedicalRecord deleteMedicalRecord(MedicalRecord medicalRecord) {
+<span class="fc" id="L68">        return medicalRecordCRUD.deleteMedicalRecord(medicalRecord);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

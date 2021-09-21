@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ChildrenInfoManagement.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">apiSafetyNet</a> &gt; <a href="index.source.html" class="el_package">com.safetynet.apiSafetyNet.service.management</a> &gt; <span class="el_source">ChildrenInfoManagement.java</span></div><h1>ChildrenInfoManagement.java</h1><pre class="source lang-java linenums">package com.safetynet.apiSafetyNet.service.management;
+
+import com.safetynet.apiSafetyNet.model.Data.People;
+import com.safetynet.apiSafetyNet.model.Data.PeopleDetailed;
+import com.safetynet.apiSafetyNet.model.InputData.MedicalRecord;
+import com.safetynet.apiSafetyNet.model.InputData.Person;
+import com.safetynet.apiSafetyNet.model.OutputData.ChildrenInfo;
+import com.safetynet.apiSafetyNet.model.OutputData.HomeInfo;
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+
+@Service
+public class ChildrenInfoManagement {
+
+    @Autowired
+    private PersonManagement personManagement;
+
+<span class="fc" id="L21">    public ChildrenInfoManagement() {</span>
+<span class="fc" id="L22">    }</span>
+
+<span class="fc" id="L24">    public ChildrenInfoManagement(PersonManagement personManagement) {</span>
+<span class="fc" id="L25">        this.personManagement = personManagement;</span>
+<span class="fc" id="L26">    }</span>
+
+    /**
+     *
+     * This method fills the ChildrenInfo data from the list of Persons and MedicalRecords that live at a specified address.
+     *
+     * @see Person
+     * @see MedicalRecord
+     * @see ChildrenInfo
+     *
+     * @param personListFromAddress the list of the person that live at a specified address
+     * @param medicalRecordListFromPersonList the list of the MedicalRecord that are in &quot;personListFromAddress&quot;.
+     * @param childrenInfo the new ChilrenInfo that will be updated.
+     * @return the ChildrenInfo updated with the content of the people living at the address.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public void calculateAgeForPersonListAndAddPersonToAdultOrChildList(ArrayList&lt;Person&gt; personListFromAddress, ArrayList&lt;MedicalRecord&gt; medicalRecordListFromPersonList, ChildrenInfo childrenInfo) {
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        for(int i = 0; i &lt; personListFromAddress.size(); i++){</span>
+<span class="fc" id="L46">            int agePerson = personManagement.getAgeFromPerson(medicalRecordListFromPersonList.get(i));</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">            if(agePerson&lt;19){</span>
+<span class="fc" id="L48">                childrenInfo.getChildren().add(new People(personListFromAddress.get(i).getFirstName(),personListFromAddress.get(i).getLastName(), agePerson));</span>
+<span class="fc" id="L49">                childrenInfo.setNumberOfChildren(childrenInfo.getNumberOfChildren()+1);</span>
+            }
+            else {
+<span class="fc" id="L52">                childrenInfo.getOtherMembers().add(new People(personListFromAddress.get(i).getFirstName(),personListFromAddress.get(i).getLastName(), agePerson));</span>
+            }
+        }
+<span class="fc" id="L55">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

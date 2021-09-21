@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FireStationCRUD.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">apiSafetyNet</a> &gt; <a href="index.source.html" class="el_package">com.safetynet.apiSafetyNet.repository</a> &gt; <span class="el_source">FireStationCRUD.java</span></div><h1>FireStationCRUD.java</h1><pre class="source lang-java linenums">package com.safetynet.apiSafetyNet.repository;
+
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.jsoniter.JsonIterator;
+import com.safetynet.apiSafetyNet.model.Data.PeopleDetailed;
+import com.safetynet.apiSafetyNet.model.InputData.FireStation;
+import com.safetynet.apiSafetyNet.model.InputData.Person;
+import com.safetynet.apiSafetyNet.model.OutputData.HomeInfo;
+import lombok.Data;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
+@Data
+@Repository
+public class FireStationCRUD {
+
+    @Value(&quot;${safetynet.path-data}&quot;)
+    private String pathData;
+
+    /**
+     *
+     * This method retrieves the list of fire stations from the Database,
+     * adds the new fire station and updates the Database.
+     *
+     * @see FireStation
+     *
+     * @param fireStation the new fire station to be added.
+     * @return the new added fire station.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public FireStation addFireStation(FireStation fireStation) {
+<span class="fc" id="L46">        JSONObject fireStationToAddToJSON = new JSONObject();</span>
+<span class="fc" id="L47">        fireStationToAddToJSON.put(&quot;address&quot;, fireStation.getAddress());</span>
+<span class="fc" id="L48">        fireStationToAddToJSON.put(&quot;station&quot;, fireStation.getStation());</span>
+
+<span class="fc" id="L50">        JSONParser jsonP = new JSONParser();</span>
+        try {
+<span class="fc" id="L52">            JSONObject jsonO = (JSONObject) jsonP.parse(new FileReader(pathData));</span>
+
+            //Get all Person from JSON file
+<span class="fc" id="L55">            JSONArray fireStations = (JSONArray) jsonO.get(&quot;firestations&quot;);</span>
+
+<span class="fc" id="L57">            fireStations.add(fireStationToAddToJSON);</span>
+<span class="fc" id="L58">            jsonO.put(&quot;firestations&quot;, fireStations);</span>
+<span class="fc" id="L59">            writeInFile(jsonO);</span>
+<span class="nc" id="L60">        } catch (IOException | ParseException e) {</span>
+<span class="nc" id="L61">            e.printStackTrace();</span>
+<span class="fc" id="L62">        }</span>
+<span class="fc" id="L63">        return fireStation;</span>
+    }
+
+    /**
+     *
+     * This method retrieves the list of fire stations from the Database,
+     * searches for the given fire station, updates it and updates the Database.
+     *
+     * @see FireStation
+     *
+     * @param fireStation the fire station to update.
+     * @return the updated fire station or NULL if the given fire station wasn't found in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public FireStation modifyInfoFireStation(FireStation fireStation) {
+<span class="fc" id="L80">        JSONParser jsonP = new JSONParser();</span>
+<span class="fc" id="L81">        FireStation result = null;</span>
+        try {
+<span class="fc" id="L83">            JSONObject jsonO = (JSONObject) jsonP.parse(new FileReader(pathData));</span>
+
+            //Get all FireStation from JSON file
+<span class="fc" id="L86">            ArrayList&lt;FireStation&gt; fireStationList = getFireStationsFromJSONFile(jsonO);</span>
+
+<span class="fc" id="L88">            boolean isFireStationToModifyPresent = false;</span>
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">            for(int i =0; i&lt;fireStationList.size();i++) {</span>
+<span class="pc bpc" id="L90" title="1 of 2 branches missed.">                if (fireStationList.get(i).getAddress().equals(fireStation.getAddress()) ) {</span>
+<span class="fc" id="L91">                    isFireStationToModifyPresent = true;</span>
+<span class="fc" id="L92">                    fireStationList.remove(i);</span>
+<span class="fc" id="L93">                    fireStationList.add(i, fireStation);</span>
+<span class="fc" id="L94">                    break;</span>
+                }
+            }
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">            if (isFireStationToModifyPresent){</span>
+<span class="fc" id="L98">                JsonArray personListUpdated = new Gson().toJsonTree(fireStationList).getAsJsonArray();</span>
+<span class="fc" id="L99">                jsonO.put(&quot;firestations&quot;, personListUpdated);</span>
+<span class="fc" id="L100">                writeInFile(jsonO);</span>
+<span class="fc" id="L101">                result = fireStation;</span>
+            }
+<span class="nc" id="L103">        } catch (ParseException e) {</span>
+<span class="nc" id="L104">            e.printStackTrace();</span>
+<span class="nc" id="L105">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L106">            e.printStackTrace();</span>
+<span class="nc" id="L107">        } catch (IOException e) {</span>
+<span class="nc" id="L108">            e.printStackTrace();</span>
+<span class="pc" id="L109">        }</span>
+<span class="fc" id="L110">        return result;</span>
+    }
+
+    /**
+     *
+     * This method retrieves the list of fire stations from the Database,
+     * searches for the given fire station, deletes it and updates the Database.
+     *
+     * @see FireStation
+     *
+     * @param fireStation the fire station to delete.
+     * @return the deleted fire station or NULL if the given fire station wasn't found in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public FireStation deleteFireStation(FireStation fireStation) {
+<span class="fc" id="L127">        FireStation fireStationToDelete = null;</span>
+<span class="fc" id="L128">        JSONParser jsonP = new JSONParser();</span>
+        try {
+<span class="fc" id="L130">            JSONObject jsonO = (JSONObject) jsonP.parse(new FileReader(pathData));</span>
+
+            //Get all Person from JSON file
+<span class="fc" id="L133">            ArrayList&lt;FireStation&gt; fireStationList = getFireStationsFromJSONFile(jsonO);</span>
+
+<span class="fc" id="L135">            boolean isFireStationToDeletePresent = false;</span>
+<span class="pc bpc" id="L136" title="1 of 2 branches missed.">            for(int i =0; i&lt;fireStationList.size();i++) {</span>
+<span class="pc bpc" id="L137" title="1 of 2 branches missed.">                if (fireStationList.get(i).getAddress().equals(fireStation.getAddress())) {</span>
+<span class="fc" id="L138">                    isFireStationToDeletePresent = true;</span>
+<span class="fc" id="L139">                    fireStationToDelete = fireStationList.get(i);</span>
+<span class="fc" id="L140">                    fireStationList.remove(i);</span>
+<span class="fc" id="L141">                    break;</span>
+                }
+            }
+<span class="pc bpc" id="L144" title="1 of 2 branches missed.">            if (isFireStationToDeletePresent){</span>
+<span class="fc" id="L145">                JsonArray personListUpdated = new Gson().toJsonTree(fireStationList).getAsJsonArray();</span>
+<span class="fc" id="L146">                jsonO.put(&quot;firestations&quot;, personListUpdated);</span>
+<span class="fc" id="L147">                writeInFile(jsonO);</span>
+            }
+<span class="nc" id="L149">        } catch (ParseException e) {</span>
+<span class="nc" id="L150">            e.printStackTrace();</span>
+<span class="nc" id="L151">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L152">            e.printStackTrace();</span>
+<span class="nc" id="L153">        } catch (IOException e) {</span>
+<span class="nc" id="L154">            e.printStackTrace();</span>
+<span class="pc" id="L155">        }</span>
+<span class="fc" id="L156">        return fireStationToDelete;</span>
+    }
+
+    /**
+     *
+     * This method returns the list of all the fire stations stored in the Database.
+     *
+     * @see FireStation
+     *
+     * @param jsonO the JSONObject containing all the data.
+     * @return the list of all the fire stations in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public ArrayList&lt;FireStation&gt; getFireStationsFromJSONFile(JSONObject jsonO) {
+<span class="fc" id="L172">        ArrayList&lt;FireStation&gt; fireStationListJSON = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L173">        JSONArray persons = (JSONArray) jsonO.get(&quot;firestations&quot;);</span>
+<span class="fc bfc" id="L174" title="All 2 branches covered.">        for(Object o : persons) {</span>
+<span class="fc" id="L175">            fireStationListJSON.add(JsonIterator.deserialize(o.toString(), FireStation.class));</span>
+<span class="fc" id="L176">        }</span>
+<span class="fc" id="L177">        return fireStationListJSON;</span>
+    }
+
+    private void writeInFile(JSONObject jsonO) throws IOException {
+<span class="fc" id="L181">        String jsonObjectToString = String.valueOf(jsonO);</span>
+<span class="fc" id="L182">        FileWriter file = new FileWriter(pathData);</span>
+<span class="fc" id="L183">        file.write(jsonObjectToString.replace(&quot;\\&quot;, &quot;&quot;));</span>
+<span class="fc" id="L184">        file.flush();</span>
+<span class="fc" id="L185">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

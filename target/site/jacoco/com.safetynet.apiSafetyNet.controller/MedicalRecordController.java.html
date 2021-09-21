@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MedicalRecordController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">apiSafetyNet</a> &gt; <a href="index.source.html" class="el_package">com.safetynet.apiSafetyNet.controller</a> &gt; <span class="el_source">MedicalRecordController.java</span></div><h1>MedicalRecordController.java</h1><pre class="source lang-java linenums">package com.safetynet.apiSafetyNet.controller;
+import com.safetynet.apiSafetyNet.exceptions.MedicalRecordNotFoundException;
+import com.safetynet.apiSafetyNet.exceptions.PersonNotFoundException;
+import com.safetynet.apiSafetyNet.model.InputData.FireStation;
+import com.safetynet.apiSafetyNet.model.InputData.MedicalRecord;
+import com.safetynet.apiSafetyNet.model.InputData.Person;
+import com.safetynet.apiSafetyNet.service.MedicalRecordService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+
+@RestController
+public class MedicalRecordController {
+
+    @Autowired
+    private final MedicalRecordService medicalRecordService;
+
+<span class="fc" id="L23">    private static final Logger logger = LogManager.getLogger(MedicalRecordController.class);</span>
+
+<span class="fc" id="L25">    public MedicalRecordController(MedicalRecordService medicalRecordService) {</span>
+<span class="fc" id="L26">        this.medicalRecordService = medicalRecordService;</span>
+<span class="fc" id="L27">    }</span>
+
+    /**
+     * This method receives a POST Request with a MedicaLRecord as a body to add in the Database.
+     * It calls the Service layer to do so.
+     * It returns the added MedicalRecord with the HTTP Code 201.
+     *
+     * @see MedicalRecord
+     * @param medicalRecord the MedicalRecord to be added into the Database.
+     * @return the new added MedicalRecord.
+     *
+     * @author Denis Siveton
+     * @version 1.0
+     */
+    @PostMapping(&quot;/medicalrecord&quot;)
+    public ResponseEntity&lt;Void&gt; addMedicalRecord(@Valid  @RequestBody MedicalRecord medicalRecord) {
+<span class="fc" id="L43">        MedicalRecord medicalRecordAdded = medicalRecordService.addMedicalRecord(medicalRecord);</span>
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        if (medicalRecordAdded == null) {</span>
+<span class="nc" id="L45">            return ResponseEntity.noContent().build();</span>
+        }
+        else{
+<span class="fc" id="L48">            return new ResponseEntity(medicalRecordAdded, HttpStatus.CREATED);</span>
+        }
+    }
+
+    /**
+     * This method receives a PATCH Request with a MedicalRecord as a body to update in the Database.
+     * It calls the Service layer to do so.
+     * It returns the updated MedicalRecord with the HTTP Code 204 or 404 if the MedicalRecord wasn't found in the Database.
+     *
+     * @see MedicalRecord
+     * @param medicalRecord the MedicalRecord to be updated into the Database.
+     * @return the updated MedicalRecord or NULL if no MedicalRecord was found in the Database.
+     *
+     * @author Denis Siveton
+     * @version 1.0
+     */
+    @PatchMapping(&quot;/medicalrecord&quot;)
+    public ResponseEntity&lt;Void&gt; modifyInfoMedicalRecord(@Valid @RequestBody MedicalRecord medicalRecord) throws MedicalRecordNotFoundException {
+<span class="fc" id="L66">        MedicalRecord medicalRecordModified = medicalRecordService.modifyInfoMedicalRecord(medicalRecord);</span>
+
+<span class="pc bpc" id="L68" title="1 of 2 branches missed.">        if (medicalRecordModified == null){</span>
+<span class="nc" id="L69">            MedicalRecordNotFoundException exception = new MedicalRecordNotFoundException(&quot;The Medical record with FirstName : \&quot;&quot; + medicalRecord.getFirstName() + &quot;\&quot; and LastName : \&quot;&quot; + medicalRecord.getLastName() + &quot;\&quot;, was NOT FOUND. Please search with another first name and last name.&quot;);</span>
+<span class="nc" id="L70">            logger.error(&quot;Request ended up in ERROR :'&quot; + exception.getMessage() + &quot;'.&quot;);</span>
+<span class="nc" id="L71">            throw exception;</span>
+        }
+        else{
+<span class="fc" id="L74">            return new ResponseEntity(medicalRecordModified, HttpStatus.NO_CONTENT);</span>
+        }
+    }
+
+    /**
+     * This method receives a DELETE Request with a MedicalRecord as a body to delete from the Database.
+     * It calls the Service layer to do so.
+     * It returns the deleted MedicalRecord with the HTTP Code 204 or 404 if the MedicalRecord wasn't found in the Database.
+     *
+     * @see MedicalRecord
+     * @param medicalRecord the MedicalRecord to be deleted from the Database.
+     * @return the deleted MedicalRecord or NULL if no MedicalRecord was found in the Database.
+     *
+     * @author Denis Siveton
+     * @version 1.0
+     */
+    @DeleteMapping(&quot;/medicalrecord&quot;)
+    public ResponseEntity&lt;Void&gt; deleteMedicalRecord(@Valid @RequestBody MedicalRecord medicalRecord) {
+<span class="fc" id="L92">        MedicalRecord medicalRecordDeleted = medicalRecordService.deleteMedicalRecord(medicalRecord);</span>
+
+<span class="pc bpc" id="L94" title="1 of 2 branches missed.">        if (medicalRecordDeleted == null) {</span>
+<span class="nc" id="L95">            MedicalRecordNotFoundException exception = new MedicalRecordNotFoundException(&quot;The Medical record with FirstName : \&quot;&quot; +medicalRecord.getFirstName()+ &quot;\&quot; and LastName : \&quot;&quot; +medicalRecord.getLastName()+ &quot;\&quot;, was NOT FOUND. Please search with another first name and last name.&quot;);</span>
+<span class="nc" id="L96">            logger.error(&quot;Request ended up in ERROR :'&quot; +exception.getMessage() + &quot;'.&quot;);</span>
+<span class="nc" id="L97">            throw exception;</span>
+        }
+        else{
+<span class="fc" id="L100">            return new ResponseEntity(medicalRecordDeleted, HttpStatus.NO_CONTENT);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

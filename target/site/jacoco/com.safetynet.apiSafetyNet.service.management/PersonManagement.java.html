@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PersonManagement.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">apiSafetyNet</a> &gt; <a href="index.source.html" class="el_package">com.safetynet.apiSafetyNet.service.management</a> &gt; <span class="el_source">PersonManagement.java</span></div><h1>PersonManagement.java</h1><pre class="source lang-java linenums">package com.safetynet.apiSafetyNet.service.management;
+
+import com.safetynet.apiSafetyNet.model.Data.PeopleDetailed;
+import com.safetynet.apiSafetyNet.model.InputData.FireStation;
+import com.safetynet.apiSafetyNet.model.InputData.MedicalRecord;
+import com.safetynet.apiSafetyNet.model.InputData.Person;
+import com.safetynet.apiSafetyNet.model.OutputData.AddressInfo;
+import com.safetynet.apiSafetyNet.model.OutputData.PersonInfo;
+import lombok.Data;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
+import static java.time.LocalDate.now;
+
+@Service
+public class PersonManagement {
+
+    private MedicalRecordManagement medicalRecordManagement;
+
+<span class="fc" id="L24">    public PersonManagement(MedicalRecordManagement medicalRecordManagement) {</span>
+<span class="fc" id="L25">        this.medicalRecordManagement = medicalRecordManagement;</span>
+<span class="fc" id="L26">    }</span>
+
+    /**
+     *
+     * This method searches the Persons living at a specific address, creates the equivalent PeopleDetailed and adds it to the AddressInfo data.
+     *
+     * @see AddressInfo
+     * @see Person
+     * @see MedicalRecord
+     * @see MedicalRecordManagement#getMedicalRecord(String, String, ArrayList)
+     *
+     * @param address a specific address.
+     * @param addressInfo the object that needs to be completed.
+     * @param medicalRecords the list of the MedicalRecords from the Database.
+     * @param persons the list of the Persons from the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public void getPersonsFromAddress(String address, AddressInfo addressInfo, ArrayList&lt;MedicalRecord&gt; medicalRecords, ArrayList&lt;Person&gt; persons) {
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        for(Person person : persons){</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">            if(person.getAddress().equals(address)){</span>
+<span class="fc" id="L48">                MedicalRecord medicalRecordPerson = medicalRecordManagement.getMedicalRecord(person.getFirstName(), person.getLastName(), medicalRecords);</span>
+<span class="fc" id="L49">                PeopleDetailed peopleDetailed = new PeopleDetailed(person.getLastName(), person.getPhone(), getAgeFromPerson(medicalRecordPerson),medicalRecordPerson.getMedications(), medicalRecordPerson.getAllergies());</span>
+<span class="fc" id="L50">                addressInfo.getPeopleDetailedArrayList().add(peopleDetailed);</span>
+            }
+<span class="fc" id="L52">        }</span>
+<span class="fc" id="L53">    }</span>
+
+    /**
+     *
+     * This method creates a phone list based on an address list. If the person's address is within the address list then his phone number is added.
+     * It returns the phone list.
+     *
+     * @see Person
+     *
+     * @param personList the list of the Persons from the Database
+     * @param addresses a list of addresses.
+     * @return the list of phone number or NULL if no one lived at any address.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public ArrayList&lt;String&gt; getPhonesFromAddressList(ArrayList&lt;Person&gt; personList, ArrayList&lt;String&gt; addresses) {
+<span class="fc" id="L70">        ArrayList&lt;String&gt; phones = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">        for (Person person : personList){</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">            if(addresses.contains(person.getAddress())){</span>
+<span class="fc" id="L73">                phones.add(person.getPhone());</span>
+            }
+<span class="fc" id="L75">        }</span>
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">        if(phones.size() == 0){</span>
+<span class="nc" id="L77">            phones = null;</span>
+        }
+<span class="fc" id="L79">        return phones;</span>
+    }
+
+    /**
+     *
+     * This method creates a email list based on an city. If the person lives in the specified city then his email address is added.
+     * It returns the email list.
+     *
+     * @see Person
+     *
+     * @param city the name of the city.
+     * @param personListJSON the list of the Persons from the Database.
+     * @return the list of email or NULL if no one lived in the specified city.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public ArrayList&lt;String&gt; createEmailListFromAddress(String city, ArrayList&lt;Person&gt; personListJSON) {
+
+<span class="fc" id="L98">        ArrayList&lt;String&gt; emails = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">        for(Person person : personListJSON){</span>
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">            if(person.getCity().equals(city)) {</span>
+<span class="fc" id="L101">                emails.add(person.getEmail());</span>
+            }
+<span class="fc" id="L103">        }</span>
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">        if(emails.size() == 0){</span>
+<span class="nc" id="L105">            emails = null;</span>
+        }
+<span class="fc" id="L107">        return emails;</span>
+    }
+
+    /**
+     *
+     * This method calculates the age of a person based on his birth date.
+     * It returns the age in years.
+     *
+     * @see MedicalRecord
+     *
+     * @param medicalRecord the MedicalRecord of the person.
+     * @return the age of the person.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public int getAgeFromPerson(MedicalRecord medicalRecord) {
+        int agePerson;
+
+        /*Cast the Person's birthDate in LocalDate type */
+<span class="fc" id="L127">        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(&quot;MM/dd/yyyy&quot;);</span>
+<span class="fc" id="L128">        LocalDate birthDate = LocalDate.parse(medicalRecord.getBirthDate(), formatter);</span>
+<span class="fc" id="L129">        LocalDate currentDate = now();</span>
+
+        /*Calculate age in years */
+<span class="fc" id="L132">        agePerson = Period.between(birthDate, currentDate).getYears();</span>
+<span class="fc" id="L133">        return agePerson;</span>
+    }
+
+    /**
+     *
+     * This method creates a list of Persons from the wanted Person and its relatives (same last name). It returns this new list.
+     *
+     * @see Person
+     *
+     * @param personList the list of all the Persons from the Database.
+     * @param firstName the first name of the person who is searched.
+     * @param lastName the last name of the person who is searched.
+     * @return the list of Persons.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public ArrayList&lt;Person&gt; filterListPersonWithFirstNameAndLastName(ArrayList&lt;Person&gt; personList, String lastName, String firstName) {
+<span class="fc" id="L151">        ArrayList&lt;Person&gt; personListFiltered = new ArrayList&lt;&gt;();</span>
+        //First run : add the person with matching firstName and LastName
+        //Second run : add the person with only matching lastName
+<span class="fc bfc" id="L154" title="All 2 branches covered.">        for (int run = 0; run &lt;2;run++){</span>
+<span class="fc bfc" id="L155" title="All 2 branches covered.">            for(int i = 0;i&lt;personList.size();i++){</span>
+<span class="fc bfc" id="L156" title="All 2 branches covered.">                if(run == 0) {</span>
+<span class="pc bpc" id="L157" title="1 of 4 branches missed.">                    if (personList.get(i).getFirstName().equals(firstName) &amp;&amp; personList.get(i).getLastName().equals(lastName)) {</span>
+<span class="fc" id="L158">                        personListFiltered.add(personList.get(i));</span>
+<span class="fc" id="L159">                        personList.remove(i);</span>
+                    }
+                }
+<span class="pc bpc" id="L162" title="1 of 2 branches missed.">                else if(personList.size()!=0){</span>
+<span class="fc bfc" id="L163" title="All 2 branches covered.">                    if (personList.get(i).getLastName().equals(lastName)) {</span>
+<span class="fc" id="L164">                        personListFiltered.add(personList.get(i));</span>
+                    }
+                }
+            }
+        }
+
+<span class="fc" id="L170">        return personListFiltered;</span>
+    }
+
+    /**
+     *
+     * This method creates a list of PersonInfo using two filtered lists of Persons and MedicalRecords.
+     *
+     * @see Person
+     * @see MedicalRecord
+     * @see PersonInfo
+     *
+     * @param personInfoList the list of PersonInfo that has to be filled.
+     * @param filteredMedicalRecordList the list of MedicalRecords previously sorted.
+     * @param filteredPersonList the list of Persons previously sorted.
+     * @return the completed and up to date list of PersonInfo.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public void createPersonInfoListFromFilteredLists(ArrayList&lt;PersonInfo&gt; personInfoList, ArrayList&lt;MedicalRecord&gt; filteredMedicalRecordList, ArrayList&lt;Person&gt; filteredPersonList) {
+<span class="fc bfc" id="L190" title="All 2 branches covered.">        for(int i = 0; i&lt;filteredPersonList.size(); i++){</span>
+<span class="fc" id="L191">            Person person = filteredPersonList.get(i);</span>
+<span class="fc" id="L192">            MedicalRecord medicalRecord = filteredMedicalRecordList.get(i);</span>
+<span class="fc" id="L193">            personInfoList.add(new PersonInfo(person.getLastName(), person.getAddress(),getAgeFromPerson(medicalRecord), person.getEmail(), medicalRecord.getMedications(), medicalRecord.getAllergies()));</span>
+        }
+<span class="fc" id="L195">    }</span>
+
+    /**
+     *
+     * This method creates a list of Persons that live at a specified address.
+     *
+     * @see Person
+     *
+     * @param address the address.
+     * @param persons the list of the Persons from the Database.
+     * @return the list of Persons that live the specified address.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public ArrayList&lt;Person&gt; getPersonListFromAddress(String address, ArrayList&lt;Person&gt; persons) {
+<span class="fc" id="L211">        ArrayList&lt;Person&gt; personListFromAddress = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L212" title="All 2 branches covered.">        for(Person person : persons){</span>
+<span class="fc bfc" id="L213" title="All 2 branches covered.">            if(person.getAddress().equals(address)){</span>
+<span class="fc" id="L214">                personListFromAddress.add(person);</span>
+            }
+<span class="fc" id="L216">        }</span>
+<span class="fc" id="L217">        return personListFromAddress;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
