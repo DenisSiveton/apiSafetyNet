@@ -1,8 +1,12 @@
 package com.safetynet.apiSafetyNet.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.safetynet.apiSafetyNet.model.Data.People;
+import com.safetynet.apiSafetyNet.model.Data.PeopleDetailed;
 import com.safetynet.apiSafetyNet.model.InputData.FireStation;
 import com.safetynet.apiSafetyNet.model.InputData.MedicalRecord;
+import com.safetynet.apiSafetyNet.model.OutputData.AddressInfo;
+import com.safetynet.apiSafetyNet.model.OutputData.HomeInfo;
 import com.safetynet.apiSafetyNet.model.OutputData.InhabitantInfo;
 import com.safetynet.apiSafetyNet.service.FireStationService;
 import com.safetynet.apiSafetyNet.service.MedicalRecordService;
@@ -18,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -26,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(controllers = FireStationController.class)
 
-public class FireStationControllerTest2 {
+public class FireStationControllerUnitTest {
     @MockBean
     private FireStationService fireStationService;
 
@@ -66,6 +71,7 @@ public class FireStationControllerTest2 {
     @Test
     public void testDeleteFireStation_VerifyMethodIsCalledWithCorrectArgument() throws Exception {
         FireStation fireStationTest = generateFireStation();
+        when(fireStationService.deleteFireStation(any())).thenReturn(fireStationTest);
         fireStationController = new FireStationController(fireStationService);
 
         //ACT
@@ -80,7 +86,9 @@ public class FireStationControllerTest2 {
     @Test
     public void testGetInfoPersonFromFireStationNumber_VerifyMethodIsCalledWithCorrectArgument() throws Exception {
         String stationNumberTest = "1";
-        when(fireStationService.getInfoPersonFromFireStationNumber(any())).thenReturn(null);
+
+        InhabitantInfo inhabitantInfoTest = new InhabitantInfo(new ArrayList<>(), 1, 2);
+        when(fireStationService.getInfoPersonFromFireStationNumber(any())).thenReturn(inhabitantInfoTest);
         fireStationController = new FireStationController(fireStationService);
 
         //ACT
@@ -96,7 +104,11 @@ public class FireStationControllerTest2 {
     public void getHomeListsFromFiresStationNumbers_VerifyMethodIsCalledWithCorrectArgument() throws Exception {
         String stationsTest = "1,2";
         ArrayList<String> stationListTest = new ArrayList<>(Arrays.asList(stationsTest.split(",")));
-        when(fireStationService.getHomeInfoListsFromFireStationNumbers(any())).thenReturn(null);
+
+        ArrayList<HomeInfo> listOfHomeInfoTest = new ArrayList<>();
+        ArrayList<PeopleDetailed> listOfPeopleDetailedForTest = new ArrayList<>();
+        listOfHomeInfoTest.add(new HomeInfo("address 1", listOfPeopleDetailedForTest));
+        when(fireStationService.getHomeInfoListsFromFireStationNumbers(any())).thenReturn(listOfHomeInfoTest);
         fireStationController = new FireStationController(fireStationService);
 
         //ACT
@@ -112,7 +124,8 @@ public class FireStationControllerTest2 {
     @Test
     public void getInfoFromEachPersonFromAddressAndAppointedFireStationNumber_VerifyMethodIsCalledWithCorrectArgument() throws Exception {
         String addressTest = "1509 Culver St";
-        when(fireStationService.getInfoFromEachPersonFromAddressAndAppointedFireStationNumber(any())).thenReturn(null);
+        AddressInfo addressInfoTest = new AddressInfo("1", new ArrayList<>());
+        when(fireStationService.getInfoFromEachPersonFromAddressAndAppointedFireStationNumber(any())).thenReturn(addressInfoTest);
         fireStationController = new FireStationController(fireStationService);
 
         //ACT

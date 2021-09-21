@@ -1,16 +1,19 @@
-package com.safetynet.apiSafetyNet.repository.CRUD;
+package com.safetynet.apiSafetyNet.repository;
 
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.jsoniter.JsonIterator;
+import com.safetynet.apiSafetyNet.model.Data.PeopleDetailed;
 import com.safetynet.apiSafetyNet.model.InputData.FireStation;
 import com.safetynet.apiSafetyNet.model.InputData.Person;
+import com.safetynet.apiSafetyNet.model.OutputData.HomeInfo;
 import lombok.Data;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.io.FileNotFoundException;
@@ -23,15 +26,22 @@ import java.util.ArrayList;
 @Repository
 public class FireStationCRUD {
 
+    @Value("${safetynet.path-data}")
     private String pathData;
 
-    public FireStationCRUD() {
-    }
-
-    public FireStationCRUD(String pathData) {
-        this.pathData = pathData;
-    }
-
+    /**
+     *
+     * This method retrieves the list of fire stations from the Database,
+     * adds the new fire station and updates the Database.
+     *
+     * @see FireStation
+     *
+     * @param fireStation the new fire station to be added.
+     * @return the new added fire station.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
     public FireStation addFireStation(FireStation fireStation) {
         JSONObject fireStationToAddToJSON = new JSONObject();
         fireStationToAddToJSON.put("address", fireStation.getAddress());
@@ -52,6 +62,20 @@ public class FireStationCRUD {
         }
         return fireStation;
     }
+
+    /**
+     *
+     * This method retrieves the list of fire stations from the Database,
+     * searches for the given fire station, updates it and updates the Database.
+     *
+     * @see FireStation
+     *
+     * @param fireStation the fire station to update.
+     * @return the updated fire station or NULL if the given fire station wasn't found in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
     public FireStation modifyInfoFireStation(FireStation fireStation) {
         JSONParser jsonP = new JSONParser();
         FireStation result = null;
@@ -85,7 +109,22 @@ public class FireStationCRUD {
         }
         return result;
     }
-    public void deleteFireStation(FireStation fireStation) {
+
+    /**
+     *
+     * This method retrieves the list of fire stations from the Database,
+     * searches for the given fire station, deletes it and updates the Database.
+     *
+     * @see FireStation
+     *
+     * @param fireStation the fire station to delete.
+     * @return the deleted fire station or NULL if the given fire station wasn't found in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public FireStation deleteFireStation(FireStation fireStation) {
+        FireStation fireStationToDelete = null;
         JSONParser jsonP = new JSONParser();
         try {
             JSONObject jsonO = (JSONObject) jsonP.parse(new FileReader(pathData));
@@ -97,6 +136,7 @@ public class FireStationCRUD {
             for(int i =0; i<fireStationList.size();i++) {
                 if (fireStationList.get(i).getAddress().equals(fireStation.getAddress())) {
                     isFireStationToDeletePresent = true;
+                    fireStationToDelete = fireStationList.get(i);
                     fireStationList.remove(i);
                     break;
                 }
@@ -113,8 +153,21 @@ public class FireStationCRUD {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return fireStationToDelete;
     }
 
+    /**
+     *
+     * This method returns the list of all the fire stations stored in the Database.
+     *
+     * @see FireStation
+     *
+     * @param jsonO the JSONObject containing all the data.
+     * @return the list of all the fire stations in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
     public ArrayList<FireStation> getFireStationsFromJSONFile(JSONObject jsonO) {
         ArrayList<FireStation> fireStationListJSON = new ArrayList<>();
         JSONArray persons = (JSONArray) jsonO.get("firestations");

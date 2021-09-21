@@ -1,6 +1,7 @@
 package com.safetynet.apiSafetyNet.controller.integrationTests;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.safetynet.apiSafetyNet.model.InputData.MedicalRecord;
 import com.safetynet.apiSafetyNet.model.InputData.Person;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -17,13 +20,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class PersonControllerIT {
+public class MedicalRecordControllerIT {
 
     @Autowired
     public MockMvc mockMvc;
 
-    private static Person generatePerson() {
-        return new Person("Denis","Siveton","15 Fame Road","Culver","97451","741-874-6512","ds@email.com");
+    private static MedicalRecord generateMedicalRecord() {
+        return new MedicalRecord("Denis", "Siveton", "06/01/1992",
+                new ArrayList<String>(Arrays.asList("aznol:200mg")), new ArrayList<String>(Arrays.asList("Peanut")));
     }
 
     public static String asJsonString(final Object obj) {
@@ -35,112 +39,49 @@ public class PersonControllerIT {
     }
 
     @Test
-    public void testAddPerson() throws Exception {
+    public void testAddMedicalRecord() throws Exception {
 
         //ARRANGE
-        Person personToAddTest = generatePerson();
+        MedicalRecord medicalRecordToAddTest = generateMedicalRecord();
 
         //ACT
-        mockMvc.perform(post("/person")
+        mockMvc.perform(post("/medicalrecord")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(personToAddTest)))
+                .content(asJsonString(medicalRecordToAddTest)))
 
         //ASSERT
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("firstName", is(personToAddTest.getFirstName())));
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("firstName", is(medicalRecordToAddTest.getFirstName())));
     }
 
     @Test
-    public void testModifyInfoPerson() throws Exception {
+    public void testModifyInfoMedicalRecord() throws Exception {
 
         //ARRANGE
-        Person personToAddTest = generatePerson();
+        MedicalRecord medicalRecordToModifyTest = generateMedicalRecord();
 
         //ACT
-        mockMvc.perform(patch("/person")
+        mockMvc.perform(patch("/medicalrecord")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(personToAddTest)))
+                .content(asJsonString(medicalRecordToModifyTest)))
 
         //ASSERT
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("firstName", is(personToAddTest.getFirstName())));
+                .andExpect(status().isNoContent())
+                .andExpect(jsonPath("firstName", is(medicalRecordToModifyTest.getFirstName())));
     }
 
     @Test
-    public void testDeletePerson() throws Exception {
+    public void testDeleteMedicalRecord() throws Exception {
 
         //ARRANGE
-        Person personToAddTest = generatePerson();
+        MedicalRecord medicalRecordToDeleteTest = generateMedicalRecord();
 
         //ACT
-        mockMvc.perform(patch("/person")
+        mockMvc.perform(patch("/medicalrecord")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(personToAddTest)))
+                .content(asJsonString(medicalRecordToDeleteTest)))
 
         //ASSERT
-                .andExpect(status().isOk());
-    }
-
-    @Test
-    public void testGetChildListFromAddress() throws Exception {
-
-        //ARRANGE
-        String addressTest = "1509 Culver St";
-
-        //ACT
-        mockMvc.perform(get("/childAlert")
-                .param("address",addressTest))
-
-        //ASSERT
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.children.[0].firstName", is("Tenley")))
-                .andExpect(jsonPath("$.numberOfChildren", is(2)));
-    }
-    @Test
-    public void testGetPhoneNumberListFromFireStationNumber() throws Exception {
-
-        //ARRANGE
-        String fireStationNumberTest = "1";
-
-        //ACT
-        mockMvc.perform(get("/phoneAlert")
-                .param("firestation",fireStationNumberTest))
-
-        //ASSERT
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0]", is("841-874-6512")));
-    }
-
-    @Test
-    public void getMailFromPersonFromCity() throws Exception {
-
-        //ARRANGE
-        String cityTest = "Culver";
-
-        //ACT
-        mockMvc.perform(get("/communityEmail")
-                .param("city", cityTest))
-
-        //ASSERT
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0]", is("jaboyd@email.com")));
-    }
-
-    @Test
-    public void getInfoFromPersonWithName() throws Exception {
-
-        //ARRANGE
-        String firstName = "Denis";
-        String lastName = "Siveton";
-
-        //ACT
-        mockMvc.perform(get("/personInfo")
-                .param("firstName", firstName)
-                .param("lastName", lastName))
-
-        //ASSERT
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.email", is("dsiv@email.com")))
-                .andExpect(jsonPath("$.allergies.[0]", is("Peanut")));
+                .andExpect(status().isNoContent());
     }
 }

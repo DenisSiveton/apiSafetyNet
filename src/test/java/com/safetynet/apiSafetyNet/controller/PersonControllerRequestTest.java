@@ -11,6 +11,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.safetynet.apiSafetyNet.model.InputData.Person;
+import com.safetynet.apiSafetyNet.model.OutputData.ChildrenInfo;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.safetynet.apiSafetyNet.service.PersonService;
 
+import java.util.ArrayList;
+
 @WebMvcTest(controllers = PersonController.class)
-public class PersonControllerTest {
+public class PersonControllerRequestTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -35,35 +38,37 @@ public class PersonControllerTest {
     @Test
     public void testAddPerson() throws Exception {
         Person personTest = generatePerson();
+        when(personService.addPerson(personTest)).thenReturn(personTest);
         mockMvc.perform(post("/person")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(personTest)))
-                .andExpect(status().isOk());
-
-        // TODO: verifier que la methode addPerson de la couche service soit appelée 1 fois (bon argument)!!!
+                .andExpect(status().isCreated());
     }
 
     @Test
     public void testModifyInfoPerson() throws Exception {
         Person personTest = generatePerson();
+        when(personService.modifyInfoPerson(personTest)).thenReturn(personTest);
         mockMvc.perform(patch("/person")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(personTest)))
-                .andExpect(status().isOk());
+                .andExpect(status().isNoContent());
     }
 
     @Test
     public void testDeletePerson() throws Exception {
         Person personTest = generatePerson();
+        when(personService.deletePerson(personTest)).thenReturn(personTest);
         mockMvc.perform(delete("/person")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(personTest)))
-                .andExpect(status().isOk());
+                .andExpect(status().isNoContent());
     }
 
     @Test
     public void testGetChildListFromAddress() throws Exception {
         String address = "1509 Culver St";
+        when(personService.getChildListFromAddress(address)).thenReturn(new ChildrenInfo(new ArrayList<>(), new ArrayList<>(), 0));
         mockMvc.perform(get("/childAlert")
                 .param("address", address))
                 .andExpect(status().isOk());

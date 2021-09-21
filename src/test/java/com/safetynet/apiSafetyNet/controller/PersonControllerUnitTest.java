@@ -1,6 +1,8 @@
 package com.safetynet.apiSafetyNet.controller;
 
+import com.safetynet.apiSafetyNet.exceptions.PersonNotFoundException;
 import com.safetynet.apiSafetyNet.model.InputData.Person;
+import com.safetynet.apiSafetyNet.model.OutputData.ChildrenInfo;
 import com.safetynet.apiSafetyNet.service.PersonService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,7 +12,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -18,7 +22,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
 @Import(PersonController.class)
-public class PersonControllerTest2 {
+public class PersonControllerUnitTest {
 
     @MockBean
     private PersonService personService;
@@ -47,7 +51,7 @@ public class PersonControllerTest2 {
     }
 
     @Test
-    public void testModifyInfoPerson_VerifyMethodIsCalledWithCorrectArgument(){
+    public void testModifyInfoPerson_VerifyMethodIsCalledWithCorrectArgument() throws PersonNotFoundException {
         //ARRANGE
         Person personTest = generatePerson();
         when(personService.modifyInfoPerson(any())).thenReturn(personTest);
@@ -66,6 +70,7 @@ public class PersonControllerTest2 {
     public void testDeletePerson_VerifyMethodIsCalledWithCorrectArgument(){
         //ARRANGE
         Person personTest = generatePerson();
+        when(personService.deletePerson(any())).thenReturn(personTest);
         personController = new PersonController(personService);
 
         //ACT
@@ -81,7 +86,7 @@ public class PersonControllerTest2 {
     public void testGetChildListFromAddress_VerifyMethodIsCalledWithCorrectArgument(){
         //ARRANGE
         String addressTest = "15 Road St";
-        when(personService.getChildListFromAddress(any())).thenReturn(null);
+        when(personService.getChildListFromAddress(any())).thenReturn(new ChildrenInfo(new ArrayList<>(), new ArrayList<>(), 0));
         personController = new PersonController(personService);
 
         //ACT
@@ -97,7 +102,7 @@ public class PersonControllerTest2 {
     public void testGetPhoneNumberListFromFireStationNumber_VerifyMethodIsCalledWithCorrectArgument(){
         //ARRANGE
         String fireStationNumberTest = "1";
-        when(personService.getPhoneNumberListFromFireStationNumber(any())).thenReturn(null);
+        when(personService.getPhoneNumberListFromFireStationNumber(any())).thenReturn(new ArrayList<>());
         personController = new PersonController(personService);
 
         //ACT
@@ -113,7 +118,7 @@ public class PersonControllerTest2 {
     public void testGetMailFromPersonFromCity_VerifyMethodIsCalledWithCorrectArgument(){
         //ARRANGE
         String cityTest = "Culver";
-        when(personService.getMailFromAllPersonsFromCity(any())).thenReturn(null);
+        when(personService.getMailFromAllPersonsFromCity(any())).thenReturn(new ArrayList<>());
         personController = new PersonController(personService);
 
         //ACT
@@ -130,7 +135,7 @@ public class PersonControllerTest2 {
         //ARRANGE
         String firstName = "Oliver";
         String lastName = "Queen";
-        when(personService.getInfoFromPersonWithName(any(), any())).thenReturn(null);
+        when(personService.getInfoFromPersonWithName(any(), any())).thenReturn(new ArrayList<>());
         personController = new PersonController(personService);
 
         //ACT

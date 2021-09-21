@@ -12,6 +12,6 @@
   "medicalrecords":[
     {"allergies":["Peanut"],"firstName":"Denis","lastName":"Siveton","birthdate":"01/06/1992","medications":["aznol:200mg"]},
     {"allergies":["Shellfish"],"firstName":"Laura","lastName":"Palandre","birthdate":"07/15/1994","medications":["aznol:200mg"]},
-    {"allergies":[],"firstName":"Tenley","lastName":"Boyd","birthdate":"01/12/2020","medications":[]}
+    {"allergies":[],"firstName":"Eric","lastName":"Palandre","birthdate":"01/12/2020","medications":[]}
   ]
 }

@@ -1,16 +1,16 @@
-package com.safetynet.apiSafetyNet.repository.CRUD;
+package com.safetynet.apiSafetyNet.repository;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.jsoniter.JsonIterator;
+import com.safetynet.apiSafetyNet.model.InputData.FireStation;
 import com.safetynet.apiSafetyNet.model.InputData.MedicalRecord;
-import com.safetynet.apiSafetyNet.model.InputData.Person;
 import lombok.Data;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.io.FileNotFoundException;
@@ -23,6 +23,7 @@ import java.util.ArrayList;
 @Repository
 public class MedicalRecordCRUD {
 
+    @Value("${safetynet.path-data}")
     private String pathData;
 
     public MedicalRecordCRUD() {
@@ -32,6 +33,19 @@ public class MedicalRecordCRUD {
         this.pathData = pathData;
     }
 
+    /**
+     *
+     * This method retrieves the list of Medical Records from the Database,
+     * adds the new Medical Record and updates the Database.
+     *
+     * @see MedicalRecord
+     *
+     * @param medicalRecord the new Medical Record to be added.
+     * @return the new added Medical Record.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
     public MedicalRecord addMedicalRecord(MedicalRecord medicalRecord) {
         //Create new medicalRecord JSONObject from a medicalRecord JAVAObject
         JSONObject medicalRecordToAdd = getJsonObject(medicalRecord);
@@ -55,6 +69,19 @@ public class MedicalRecordCRUD {
         return medicalRecord;
     }
 
+    /**
+     *
+     * This method retrieves the list of Medical Records from the Database,
+     * searches for the given Medical Record, updates it and updates the Database.
+     *
+     * @see MedicalRecord
+     *
+     * @param medicalRecord the Medical Record to update.
+     * @return the updated Medical Record or NULL if the given Medical Record wasn't found in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
     public MedicalRecord modifyInfoMedicalRecord(MedicalRecord medicalRecord) {
         JSONParser jsonP = new JSONParser();
         MedicalRecord result = null;
@@ -89,7 +116,21 @@ public class MedicalRecordCRUD {
         return result;
     }
 
-    public void deleteMedicalRecord(MedicalRecord medicalRecord) {
+    /**
+     *
+     * This method retrieves the list of Medical Records from the Database,
+     * searches for the given Medical Record, deletes it and updates the Database.
+     *
+     * @see MedicalRecord
+     *
+     * @param medicalRecord the Medical Record to delete.
+     * @return the deleted Medical Record or NULL if the given fire station wasn't found in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public MedicalRecord deleteMedicalRecord(MedicalRecord medicalRecord) {
+        MedicalRecord medicalRecordToDelete = null;
         JSONParser jsonP = new JSONParser();
         try {
             JSONObject jsonO = (JSONObject) jsonP.parse(new FileReader(pathData));
@@ -101,6 +142,7 @@ public class MedicalRecordCRUD {
             for(int i =0; i<medicalRecordList.size();i++) {
                 if (medicalRecordList.get(i).getFirstName().equals(medicalRecord.getFirstName()) && medicalRecordList.get(i).getLastName().equals(medicalRecord.getLastName())) {
                     isMedicalRecordToModifyPresent = true;
+                    medicalRecordToDelete = medicalRecordList.get(i);
                     medicalRecordList.remove(i);
                     break;
                 }
@@ -117,8 +159,21 @@ public class MedicalRecordCRUD {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return medicalRecordToDelete;
     }
 
+    /**
+     *
+     * This method returns the list of all the Medical Records stored in the Database.
+     *
+     * @see MedicalRecord
+     *
+     * @param jsonO the JSONObject containing all the data.
+     * @return the list of all the Medical Records in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
     public ArrayList<MedicalRecord> getAllMedicalRecords(JSONObject jsonO) {
         ArrayList<MedicalRecord> medicalRecordListJSON = new ArrayList<>();
         JSONArray medicalRecords = (JSONArray) jsonO.get("medicalrecords");

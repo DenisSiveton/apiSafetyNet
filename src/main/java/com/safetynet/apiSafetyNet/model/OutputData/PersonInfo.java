@@ -6,6 +6,14 @@ import lombok.Data;
 
 @Data
 public class PersonInfo {
+    public PersonInfo(String lastName, String address, int age, String email, ArrayList<String> medications, ArrayList<String> allergies) {
+        this.lastName = lastName;
+        this.address = address;
+        this.age = age;
+        this.email = email;
+        this.medications = medications;
+        this.allergies = allergies;
+    }
 
     private String lastName;
 

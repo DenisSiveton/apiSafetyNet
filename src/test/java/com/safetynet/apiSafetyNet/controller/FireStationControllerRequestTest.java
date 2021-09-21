@@ -1,11 +1,14 @@
 package com.safetynet.apiSafetyNet.controller;
 
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.safetynet.apiSafetyNet.model.InputData.FireStation;
+import com.safetynet.apiSafetyNet.model.OutputData.AddressInfo;
+import com.safetynet.apiSafetyNet.model.OutputData.InhabitantInfo;
 import com.safetynet.apiSafetyNet.service.FireStationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +22,7 @@ import java.util.Arrays;
 
 @WebMvcTest(controllers = FireStationController.class)
 
-public class FireStationControllerTest {
+public class FireStationControllerRequestTest {
     @Autowired
     private MockMvc mockMvc;
 
@@ -29,33 +32,37 @@ public class FireStationControllerTest {
     @Test
     public void testAddFireStation() throws Exception {
         FireStation fireStationTest = generateFireStation();
+        when(fireStationService.addFireStation(fireStationTest)).thenReturn(fireStationTest);
         mockMvc.perform(post("/firestation")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(fireStationTest)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
     }
 
     @Test
     public void testModifyInfoFireStation() throws Exception {
         FireStation fireStationTest = generateFireStation();
+        when(fireStationService.modifyInfoFireStation(fireStationTest)).thenReturn(fireStationTest);
         mockMvc.perform(patch("/firestation")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(fireStationTest)))
-                .andExpect(status().isOk());
+                .andExpect(status().isNoContent());
     }
 
     @Test
     public void testDeleteFireStation() throws Exception {
         FireStation fireStationTest = generateFireStation();
+        when(fireStationService.deleteFireStation(fireStationTest)).thenReturn(fireStationTest);
         mockMvc.perform(delete("/firestation")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(fireStationTest)))
-                .andExpect(status().isOk());
+                .andExpect(status().isNoContent());
     }
 
     @Test
     public void testGetInfoPersonFromFireStationNumber() throws Exception {
         String stationNumber = "1";
+        when(fireStationService.getInfoPersonFromFireStationNumber(stationNumber)).thenReturn(new InhabitantInfo(new ArrayList<>(), 0, 0));
         mockMvc.perform(get("/firestation")
                 .param("stationNumber", stationNumber))
                 .andExpect(status().isOk());
@@ -73,6 +80,7 @@ public class FireStationControllerTest {
     @Test
     public void getInfoFromEachPersonFromAddressAndAppointedFireStationNumber() throws Exception {
         String address = "1509 Culver St";
+        when(fireStationService.getInfoFromEachPersonFromAddressAndAppointedFireStationNumber(address)).thenReturn(new AddressInfo("0", new ArrayList<>()));
         mockMvc.perform(get("/fire")
                 .param("address", address))
                 .andExpect(status().isOk());

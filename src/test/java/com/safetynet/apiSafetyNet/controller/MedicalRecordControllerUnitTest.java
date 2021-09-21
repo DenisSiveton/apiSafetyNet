@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(controllers = MedicalRecordController.class)
-public class MedicalRecordControllerTest2 {
+public class MedicalRecordControllerUnitTest {
 
     @MockBean
     private MedicalRecordService medicalRecordService;
@@ -65,6 +65,7 @@ public class MedicalRecordControllerTest2 {
     @Test
     public void testDeleteMedicalRecord_VerifyMethodIsCalledWithCorrectArgument() {
         MedicalRecord medicalRecordTest = generateMedicalRecord();
+        when(medicalRecordService.deleteMedicalRecord(any())).thenReturn(medicalRecordTest);
         medicalRecordController = new MedicalRecordController(medicalRecordService);
 
         //ACT
@@ -77,16 +78,8 @@ public class MedicalRecordControllerTest2 {
     }
 
     private static MedicalRecord generateMedicalRecord() {
-        MedicalRecord medicalRecordTest = new MedicalRecord();
-
-        medicalRecordTest.setFirstName("Denis");
-        medicalRecordTest.setLastName("Siveton");
-        medicalRecordTest.setBirthDate("06/01/1992");
-        ArrayList<String> allergies = new ArrayList<>(Arrays.asList("Peanut"));
-        medicalRecordTest.setAllergies(allergies);
-        ArrayList<String> medications = new ArrayList<>(Arrays.asList("aznol:200mg"));
-        medicalRecordTest.setMedications(medications);
-        return medicalRecordTest;
+        return new MedicalRecord("Denis", "Siveton", "06/01/1992",
+                new ArrayList<String>(Arrays.asList("aznol:200mg")), new ArrayList<String>(Arrays.asList("Peanut")));
     }
 
     public static String asJsonString(final Object obj) {

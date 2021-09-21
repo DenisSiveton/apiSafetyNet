@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="apiSafetyNet" target="11" />
+      <module name="apiSafetyNet" target="10" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

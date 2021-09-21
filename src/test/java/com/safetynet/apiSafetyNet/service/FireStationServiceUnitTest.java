@@ -1,128 +1,171 @@
-package com.safetynet.apiSafetyNet.controller;
+package com.safetynet.apiSafetyNet.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.safetynet.apiSafetyNet.model.InputData.FireStation;
-import com.safetynet.apiSafetyNet.model.InputData.MedicalRecord;
-import com.safetynet.apiSafetyNet.model.OutputData.InhabitantInfo;
-import com.safetynet.apiSafetyNet.service.FireStationService;
-import com.safetynet.apiSafetyNet.service.MedicalRecordService;
+import com.safetynet.apiSafetyNet.repository.FireStationCRUD;
+import com.safetynet.apiSafetyNet.repository.MedicalRecordCRUD;
+import com.safetynet.apiSafetyNet.repository.PersonCRUD;
+import com.safetynet.apiSafetyNet.service.management.FireStationManagement;
+import com.safetynet.apiSafetyNet.service.management.HomeInfoManagement;
+import com.safetynet.apiSafetyNet.service.management.InhabitantManagement;
+import com.safetynet.apiSafetyNet.service.management.PersonManagement;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.mockito.Mockito.*;
 
-@WebMvcTest(controllers = FireStationController.class)
-
-public class FireStationControllerTest2 {
+@ExtendWith(SpringExtension.class)
+@Import(FireStationService.class)
+public class FireStationServiceUnitTest {
     @MockBean
-    private FireStationService fireStationService;
+    private FireStationCRUD fireStationCRUD;
+    @MockBean
+    private PersonCRUD personCRUD;
+    @MockBean
+    private MedicalRecordCRUD medicalRecordCRUD;
+    @MockBean
+    private FireStationManagement fireStationManagement;
+    @MockBean
+    private PersonManagement personManagement;
+    @MockBean
+    private InhabitantManagement inhabitantManagement;
+    @MockBean
+    private HomeInfoManagement homeInfoManagement;
 
     @Autowired
-    private FireStationController fireStationController;
+    private FireStationService fireStationService;
+
+    @BeforeEach
+    public void endTest() throws IOException {
+        InputStream input = new FileInputStream("src/test/resources/dataTestOrigin.json");
+        OutputStream output = new FileOutputStream("src/test/resources/dataTest.json");
+        IOUtils.copy(input, output);
+    }
 
     @Test
     public void testAddFireStation_VerifyMethodIsCalledWithCorrectArgument() throws Exception {
         FireStation fireStationTest = generateFireStation();
-        when(fireStationService.addFireStation(any())).thenReturn(fireStationTest);
-        fireStationController = new FireStationController(fireStationService);
+        when(fireStationCRUD.addFireStation(any())).thenReturn(fireStationTest);
+        fireStationService = new FireStationService("src/test/resources/dataTest.json",fireStationCRUD, personCRUD, medicalRecordCRUD, fireStationManagement, personManagement, inhabitantManagement, homeInfoManagement);
 
         //ACT
-        fireStationController.addFireStation(fireStationTest);
+        fireStationService.addFireStation(fireStationTest);
 
         //ASSERT
-        ArgumentCaptor<FireStation> argumentCaptor = ArgumentCaptor.forClass(FireStation.class);
-        verify(fireStationService).addFireStation(argumentCaptor.capture());
-        assertThat(argumentCaptor.getValue().getAddress()).isEqualTo(fireStationTest.getAddress());
+        verify(fireStationCRUD).addFireStation(fireStationTest);
     }
 
     @Test
     public void testModifyInfoFireStation_VerifyMethodIsCalledWithCorrectArgument() throws Exception {
         FireStation fireStationTest = generateFireStation();
-        when(fireStationService.modifyInfoFireStation(any())).thenReturn(fireStationTest);
-        fireStationController = new FireStationController(fireStationService);
+        when(fireStationCRUD.modifyInfoFireStation(any())).thenReturn(fireStationTest);
+        fireStationService = new FireStationService("src/test/resources/dataTest.json",fireStationCRUD, personCRUD, medicalRecordCRUD, fireStationManagement,
+                personManagement, inhabitantManagement, homeInfoManagement);
 
         //ACT
-        fireStationController.modifyInfoFireStation(fireStationTest);
+        fireStationService.modifyInfoFireStation(fireStationTest);
 
         //ASSERT
-        ArgumentCaptor<FireStation> argumentCaptor = ArgumentCaptor.forClass(FireStation.class);
-        verify(fireStationService).modifyInfoFireStation(argumentCaptor.capture());
-        assertThat(argumentCaptor.getValue().getAddress()).isEqualTo(fireStationTest.getAddress());
+        verify(fireStationCRUD).modifyInfoFireStation(fireStationTest);
     }
 
     @Test
     public void testDeleteFireStation_VerifyMethodIsCalledWithCorrectArgument() throws Exception {
         FireStation fireStationTest = generateFireStation();
-        fireStationController = new FireStationController(fireStationService);
+        fireStationService = new FireStationService("src/test/resources/dataTest.json",fireStationCRUD, personCRUD, medicalRecordCRUD, fireStationManagement,
+                personManagement, inhabitantManagement, homeInfoManagement);
 
         //ACT
-        fireStationController.deleteFireStation(fireStationTest);
+        fireStationService.deleteFireStation(fireStationTest);
 
         //ASSERT
-        ArgumentCaptor<FireStation> argumentCaptor = ArgumentCaptor.forClass(FireStation.class);
-        verify(fireStationService).deleteFireStation(argumentCaptor.capture());
-        assertThat(argumentCaptor.getValue().getAddress()).isEqualTo(fireStationTest.getAddress());
+        verify(fireStationCRUD).deleteFireStation(fireStationTest);
     }
 
     @Test
     public void testGetInfoPersonFromFireStationNumber_VerifyMethodIsCalledWithCorrectArgument() throws Exception {
+        //ARRANGE
         String stationNumberTest = "1";
-        when(fireStationService.getInfoPersonFromFireStationNumber(any())).thenReturn(null);
-        fireStationController = new FireStationController(fireStationService);
+
+        when(fireStationCRUD.getFireStationsFromJSONFile(any())).thenReturn(null);
+        when(personCRUD.getPersonsFromJSONFile(any())).thenReturn(null);
+        when(medicalRecordCRUD.getAllMedicalRecords(any())).thenReturn(null);
+        when(fireStationManagement.getAddressesFromFireStationNumber(eq(stationNumberTest), any())).thenReturn(null);
+
+        fireStationService = new FireStationService("src/test/resources/dataTest.json",fireStationCRUD, personCRUD, medicalRecordCRUD, fireStationManagement,
+                personManagement, inhabitantManagement, homeInfoManagement);
 
         //ACT
-        fireStationController.getInfoPersonFromFireStationNumber(stationNumberTest);
+        fireStationService.getInfoPersonFromFireStationNumber(stationNumberTest);
 
         //ASSERT
-        ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
-        verify(fireStationService).getInfoPersonFromFireStationNumber(argumentCaptor.capture());
-        assertThat(argumentCaptor.getValue()).isEqualTo(stationNumberTest);
+        verify(fireStationCRUD, times(1)).getFireStationsFromJSONFile(any());
+        verify(personCRUD, times(1)).getPersonsFromJSONFile(any());
+        verify(medicalRecordCRUD, times(1)).getAllMedicalRecords(any());
+        verify(fireStationManagement, times(1)).getAddressesFromFireStationNumber(eq(stationNumberTest), any());
+        verify(inhabitantManagement, times(1)).createInhabitantsWithAddressList(any(), any(), any());
+        verify(inhabitantManagement, times(1)).calculateNumberOfAdultsAndChildrenInInhabitants(any(), any());
     }
 
     @Test
     public void getHomeListsFromFiresStationNumbers_VerifyMethodIsCalledWithCorrectArgument() throws Exception {
+        //ARRANGE
         String stationsTest = "1,2";
         ArrayList<String> stationListTest = new ArrayList<>(Arrays.asList(stationsTest.split(",")));
-        when(fireStationService.getHomeInfoListsFromFireStationNumbers(any())).thenReturn(null);
-        fireStationController = new FireStationController(fireStationService);
+
+        when(fireStationCRUD.getFireStationsFromJSONFile(any())).thenReturn(null);
+        when(personCRUD.getPersonsFromJSONFile(any())).thenReturn(null);
+        when(medicalRecordCRUD.getAllMedicalRecords(any())).thenReturn(null);
+        ArrayList<ArrayList<String >> listOfAddressList = new ArrayList<>();
+        listOfAddressList.add(new ArrayList<String >(Arrays.asList("address 1")));
+        when(fireStationManagement.addAddressesToListForEachStationNumber(eq(stationListTest), any())).thenReturn(listOfAddressList);
+
+
+        fireStationService = new FireStationService("src/test/resources/dataTest.json",fireStationCRUD, personCRUD, medicalRecordCRUD, fireStationManagement,
+                personManagement, inhabitantManagement, homeInfoManagement);
 
         //ACT
-        fireStationController.getHomeListsFromFiresStationNumbers(stationsTest);
+        fireStationService.getHomeInfoListsFromFireStationNumbers(stationListTest);
 
         //ASSERT
-        ArgumentCaptor<ArrayList<String>> argumentCaptor = ArgumentCaptor.forClass(ArrayList.class);
-        verify(fireStationService).getHomeInfoListsFromFireStationNumbers(argumentCaptor.capture());
-        assertThat(argumentCaptor.getValue().get(0)).isEqualTo(stationListTest.get(0));
-        assertThat(argumentCaptor.getValue().get(1)).isEqualTo(stationListTest.get(1));
+        verify(fireStationCRUD, times(1)).getFireStationsFromJSONFile(any());
+        verify(personCRUD, times(1)).getPersonsFromJSONFile(any());
+        verify(medicalRecordCRUD, times(1)).getAllMedicalRecords(any());
+        verify(fireStationManagement, times(1)).addAddressesToListForEachStationNumber(eq(stationListTest), any());
+        verify(homeInfoManagement, times(1)).createHomeInfoListBasedOnAddressList(eq(stationListTest), any(), any(), any(), any());
     }
 
     @Test
     public void getInfoFromEachPersonFromAddressAndAppointedFireStationNumber_VerifyMethodIsCalledWithCorrectArgument() throws Exception {
+        //ARRANGE
         String addressTest = "1509 Culver St";
-        when(fireStationService.getInfoFromEachPersonFromAddressAndAppointedFireStationNumber(any())).thenReturn(null);
-        fireStationController = new FireStationController(fireStationService);
+
+        when(fireStationCRUD.getFireStationsFromJSONFile(any())).thenReturn(null);
+        when(personCRUD.getPersonsFromJSONFile(any())).thenReturn(null);
+        when(medicalRecordCRUD.getAllMedicalRecords(any())).thenReturn(null);
+
+        fireStationService = new FireStationService("src/test/resources/dataTest.json",fireStationCRUD, personCRUD, medicalRecordCRUD, fireStationManagement,
+                personManagement, inhabitantManagement, homeInfoManagement);
 
         //ACT
-        fireStationController.getInfoFromEachPersonFromAddressAndAppointedFireStationNumber(addressTest);
+        fireStationService.getInfoFromEachPersonFromAddressAndAppointedFireStationNumber(addressTest);
 
         //ASSERT
-        ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
-        verify(fireStationService).getInfoFromEachPersonFromAddressAndAppointedFireStationNumber(argumentCaptor.capture());
-        assertThat(argumentCaptor.getValue()).isEqualTo(addressTest);
-
+        verify(fireStationCRUD, times(1)).getFireStationsFromJSONFile(any());
+        verify(personCRUD, times(1)).getPersonsFromJSONFile(any());
+        verify(medicalRecordCRUD, times(1)).getAllMedicalRecords(any());
+        verify(fireStationManagement, times(1)).getFireStationNumberFromAddress(eq(addressTest), any(), any());
     }
 
     private static FireStation generateFireStation() {

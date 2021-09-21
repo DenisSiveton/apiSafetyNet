@@ -1,13 +1,16 @@
-package com.safetynet.apiSafetyNet.repository.CRUD;
+package com.safetynet.apiSafetyNet.repository;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.jsoniter.JsonIterator;
+import com.safetynet.apiSafetyNet.model.InputData.FireStation;
+import com.safetynet.apiSafetyNet.model.InputData.MedicalRecord;
 import com.safetynet.apiSafetyNet.model.InputData.Person;
 import lombok.Data;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.io.FileNotFoundException;
@@ -20,6 +23,7 @@ import java.util.ArrayList;
 @Repository
 public class PersonCRUD {
 
+    @Value("${safetynet.path-data}")
     private String pathData;
 
     public PersonCRUD() {
@@ -29,6 +33,19 @@ public class PersonCRUD {
         this.pathData = pathData;
     }
 
+    /**
+     *
+     * This method retrieves the list of persons from the Database,
+     * adds the new person and updates the Database.
+     *
+     * @see Person
+     *
+     * @param person the new person to be added.
+     * @return the new added person.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
     public Person addPerson(Person person){
 
         JSONObject personToAddToJSON = new JSONObject();
@@ -57,6 +74,19 @@ public class PersonCRUD {
         return person;
     }
 
+    /**
+     *
+     * This method retrieves the list of persons from the Database,
+     * searches for the given person, updates it and updates the Database.
+     *
+     * @see Person
+     *
+     * @param person the person to update.
+     * @return the updated person or NULL if the given person wasn't found in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
     public Person modifyInfoPerson(Person person) {
         JSONParser jsonP = new JSONParser();
         Person result = null;
@@ -91,11 +121,23 @@ public class PersonCRUD {
         return result;
     }
 
-
-
-    public void deletePerson(Person person)
+    /**
+     *
+     * This method retrieves the list of persons from the Database,
+     * searches for the given person, deletes it and updates the Database.
+     *
+     * @see Person
+     *
+     * @param person the person to delete.
+     * @return the deleted person or NULL if the given person wasn't found in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
+    public Person deletePerson(Person person)
     {
         JSONParser jsonP = new JSONParser();
+        Person deletedPerson = null;
         try {
             JSONObject jsonO = (JSONObject) jsonP.parse(new FileReader(pathData));
 
@@ -106,6 +148,7 @@ public class PersonCRUD {
             for(int i =0; i<personList.size();i++) {
                 if (personList.get(i).getFirstName().equals(person.getFirstName()) && personList.get(i).getLastName().equals(person.getLastName())) {
                     isPersonToDeletePresent = true;
+                    deletedPerson = personList.get(i);
                     personList.remove(i);
                     break;
                 }
@@ -122,8 +165,21 @@ public class PersonCRUD {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return deletedPerson;
     }
 
+    /**
+     *
+     * This method returns the list of all the persons stored in the Database.
+     *
+     * @see Person
+     *
+     * @param jsonO the JSONObject containing all the data.
+     * @return the list of all the persons in the Database.
+     *
+     * @author denisSiveton
+     * @version 1.0
+     */
     public ArrayList<Person> getPersonsFromJSONFile(JSONObject jsonO) {
         ArrayList<Person> personListJSON = new ArrayList<>();
         JSONArray persons = (JSONArray) jsonO.get("persons");

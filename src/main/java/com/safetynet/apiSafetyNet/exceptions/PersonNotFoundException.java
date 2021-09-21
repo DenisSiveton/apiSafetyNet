@@ -1,9 +1,13 @@
 package com.safetynet.apiSafetyNet.exceptions;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-public class PersonNotFoundException extends Throwable {
-    public PersonNotFoundException(@NotNull @Pattern(regexp = "^[A-Za-z]+$") String s) {
+import javax.validation.constraints.NotNull;
+
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class PersonNotFoundException extends RuntimeException {
+    public PersonNotFoundException(@NotNull  String s) {
+        super(s);
     }
 }

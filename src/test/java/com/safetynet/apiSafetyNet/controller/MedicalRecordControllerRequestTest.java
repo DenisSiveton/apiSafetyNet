@@ -1,4 +1,5 @@
 package com.safetynet.apiSafetyNet.controller;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 @WebMvcTest(controllers = MedicalRecordController.class)
-public class MedicalRecordControllerTest {
+public class MedicalRecordControllerRequestTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -28,41 +29,36 @@ public class MedicalRecordControllerTest {
     @Test
     public void testAddMedicalRecord() throws Exception {
         MedicalRecord medicalRecordTest = generateMedicalRecord();
+        when(medicalRecordService.addMedicalRecord(medicalRecordTest)).thenReturn(medicalRecordTest);
         mockMvc.perform(post("/medicalrecord")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(medicalRecordTest)))
-                .andExpect(status().isOk());
+                .andExpect(status().isCreated());
     }
 
     @Test
     public void testModifyInfoMedicalRecord() throws Exception {
         MedicalRecord medicalRecordTest = generateMedicalRecord();
+        when(medicalRecordService.modifyInfoMedicalRecord(medicalRecordTest)).thenReturn(medicalRecordTest);
         mockMvc.perform(patch("/medicalrecord")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(medicalRecordTest)))
-                .andExpect(status().isOk());
+                .andExpect(status().isNoContent());
     }
 
     @Test
     public void testDeleteMedicalRecord() throws Exception {
         MedicalRecord medicalRecordTest = generateMedicalRecord();
+        when(medicalRecordService.deleteMedicalRecord(medicalRecordTest)).thenReturn(medicalRecordTest);
         mockMvc.perform(delete("/medicalrecord")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(medicalRecordTest)))
-                .andExpect(status().isOk());
+                .andExpect(status().isNoContent());
     }
 
     private static MedicalRecord generateMedicalRecord() {
-        MedicalRecord medicalRecordTest = new MedicalRecord();
-
-        medicalRecordTest.setFirstName("Denis");
-        medicalRecordTest.setLastName("Siveton");
-        medicalRecordTest.setBirthDate("06/01/1992");
-        ArrayList<String> allergies = new ArrayList<>(Arrays.asList("Peanut"));
-        medicalRecordTest.setAllergies(allergies);
-        ArrayList<String> medications = new ArrayList<>(Arrays.asList("aznol:200mg"));
-        medicalRecordTest.setMedications(medications);
-        return medicalRecordTest;
+        return new MedicalRecord("Denis", "Siveton", "06/01/1992",
+                new ArrayList<String>(Arrays.asList("aznol:200mg")), new ArrayList<String>(Arrays.asList("Peanut")));
     }
 
     public static String asJsonString(final Object obj) {
