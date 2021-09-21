@@ -1,0 +1,17 @@
+{"persons":[
+  {"zip":"97451","firstName":"Denis","lastName":"Siveton","address":"address 1","city":"Culver","phone":"741-874-6512","email":"ds@email.com"},
+  {"zip":"97451","firstName":"Laura","lastName":"Palandre","address":"address 2","city":"Culver","phone":"741-874-6513","email":"lp@email.com"},
+  {"zip":"97451","firstName":"Eric","lastName":"Palandre","address":"address 2","city":"Culver","phone":"741-874-6513","email":"lp@email.com"},
+],
+  "firestations":[
+    {"address":"address 1","station":"1"},
+    {"address":"address 2","station":"2"},
+    {"address":"address 3","station":"3"},
+    {"address":"address 4","station":"2"}
+  ],
+  "medicalrecords":[
+    {"allergies":["Peanut"],"firstName":"Denis","lastName":"Siveton","birthdate":"01/06/1992","medications":["aznol:200mg"]},
+    {"allergies":["Shellfish"],"firstName":"Laura","lastName":"Palandre","birthdate":"07/15/1994","medications":["aznol:200mg"]},
+    {"allergies":[],"firstName":"Eric","lastName":"Palandre","birthdate":"01/12/2020","medications":[]}
+  ]
+}

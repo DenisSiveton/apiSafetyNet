@@ -1,0 +1,982 @@
+2021-09-20 10:05:10.679  INFO 528 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 528 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 10:05:10.690 DEBUG 528 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 10:05:10.691  INFO 528 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 10:05:12.700  INFO 528 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 10:05:13.039 DEBUG 528 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 10:05:13.984  INFO 528 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-20 10:05:14.003  INFO 528 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 3.825 seconds (JVM running for 4.435)
+2021-09-20 10:05:25.362  INFO 528 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=8,9
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :32906bfe-a9a5-446b-978c-ee86b1800f33
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 10:05:25.488 ERROR 528 --- [http-nio-8080-exec-2] c.s.a.controller.FireStationController   : Request ended up in ERROR :'None of the given stations (8, 9), are responsible for any address. Please try another list of stations'.
+2021-09-20 10:05:25.500 ERROR 528 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.lang.NullPointerException: null
+	at com.safetynet.apiSafetyNet.logger.RequestLogging.afterRequest(RequestLogging.java:72) ~[classes/:na]
+	at org.springframework.web.filter.AbstractRequestLoggingFilter.doFilterInternal(AbstractRequestLoggingFilter.java:293) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93) ~[spring-boot-actuator-2.4.5.jar:2.4.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+
+2021-09-20 10:06:42.098  INFO 528 --- [http-nio-8080-exec-4] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=1,2
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :33f2cd8f-fa39-4afd-bb8a-4641e3090725
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 10:06:42.130 ERROR 528 --- [http-nio-8080-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.lang.NullPointerException: null
+	at com.safetynet.apiSafetyNet.logger.RequestLogging.afterRequest(RequestLogging.java:72) ~[classes/:na]
+	at org.springframework.web.filter.AbstractRequestLoggingFilter.doFilterInternal(AbstractRequestLoggingFilter.java:293) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93) ~[spring-boot-actuator-2.4.5.jar:2.4.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+
+2021-09-20 10:07:14.468  INFO 528 --- [http-nio-8080-exec-6] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=1,2
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :fefe37c0-c13f-4d5d-a58c-eca91adbdaa2
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 10:07:14.474 ERROR 528 --- [http-nio-8080-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.lang.NullPointerException: null
+	at com.safetynet.apiSafetyNet.logger.RequestLogging.afterRequest(RequestLogging.java:72) ~[classes/:na]
+	at org.springframework.web.filter.AbstractRequestLoggingFilter.doFilterInternal(AbstractRequestLoggingFilter.java:293) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93) ~[spring-boot-actuator-2.4.5.jar:2.4.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+
+2021-09-20 10:07:31.568  INFO 5180 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 5180 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 10:07:31.572 DEBUG 5180 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 10:07:31.572  INFO 5180 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 10:07:33.138  INFO 5180 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 10:07:33.510 DEBUG 5180 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 10:07:34.654  INFO 5180 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-20 10:07:34.675  INFO 5180 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 3.725 seconds (JVM running for 4.587)
+2021-09-20 10:07:37.468  INFO 5180 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=1,2
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :6b41163e-4dc2-40f4-a303-01ad7c5943a9
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 10:12:25.996 ERROR 5180 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.lang.NullPointerException: null
+	at com.safetynet.apiSafetyNet.logger.RequestLogging.afterRequest(RequestLogging.java:72) ~[classes/:na]
+	at org.springframework.web.filter.AbstractRequestLoggingFilter.doFilterInternal(AbstractRequestLoggingFilter.java:293) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:93) ~[spring-boot-actuator-2.4.5.jar:2.4.5]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.6.jar:5.3.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.45.jar:9.0.45]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+
+2021-09-20 10:43:10.099  INFO 29116 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 29116 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 10:43:10.103 DEBUG 29116 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 10:43:10.104  INFO 29116 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 10:43:11.735  INFO 29116 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 10:43:12.107 DEBUG 29116 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 10:43:12.187  WARN 29116 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'responseLogging' defined in file [C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes\com\safetynet\apiSafetyNet\logger\ResponseLogging.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.web.context.request.WebRequestInterceptor' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2021-09-20 10:43:12.232 ERROR 29116 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.safetynet.apiSafetyNet.logger.ResponseLogging required a bean of type 'org.springframework.web.context.request.WebRequestInterceptor' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.web.context.request.WebRequestInterceptor' in your configuration.
+
+2021-09-20 10:43:22.365  INFO 21056 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 21056 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 10:43:22.370 DEBUG 21056 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 10:43:22.371  INFO 21056 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 10:43:24.058  INFO 21056 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 10:43:24.406 DEBUG 21056 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 10:43:24.493  WARN 21056 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'responseLogging' defined in file [C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes\com\safetynet\apiSafetyNet\logger\ResponseLogging.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.web.context.request.WebRequestInterceptor' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2021-09-20 10:43:24.541 ERROR 21056 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.safetynet.apiSafetyNet.logger.ResponseLogging required a bean of type 'org.springframework.web.context.request.WebRequestInterceptor' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.web.context.request.WebRequestInterceptor' in your configuration.
+
+2021-09-20 10:46:30.398  INFO 32420 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 32420 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 10:46:30.401 DEBUG 32420 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 10:46:30.402  INFO 32420 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 10:46:32.014  INFO 32420 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 10:46:32.358 DEBUG 32420 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 10:46:33.384  INFO 32420 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-20 10:46:33.399  INFO 32420 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 3.599 seconds (JVM running for 4.285)
+2021-09-20 10:46:35.668  INFO 32420 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=1,2
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :f1043f8e-6fe9-4793-b4e2-05370d5f371d
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 10:46:35.877 DEBUG 32420 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : After request [GET /flood/stations?stations=1,2]
+2021-09-20 11:00:20.177  INFO 8312 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 8312 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 11:00:20.180 DEBUG 8312 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 11:00:20.181  INFO 8312 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 11:00:21.735  INFO 8312 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 11:00:22.084 DEBUG 8312 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 11:00:23.136  INFO 8312 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-20 11:00:23.153  INFO 8312 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 3.514 seconds (JVM running for 4.201)
+2021-09-20 11:00:26.533  INFO 8312 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=1,2
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :e36ea5b9-2163-4591-998a-fa017b7c7c0a
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 11:01:01.290  INFO 8312 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :e36ea5b9-2163-4591-998a-fa017b7c7c0a
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 11:01:01.292 DEBUG 8312 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.RequestLogging   : After request [GET /flood/stations?stations=1,2]
+2021-09-20 11:01:53.447  INFO 8312 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=8,9
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :07ee9e70-4328-422f-bca1-0e6235d0b2e4
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 11:01:53.455 ERROR 8312 --- [http-nio-8080-exec-3] c.s.a.controller.FireStationController   : Request ended up in ERROR :'None of the given stations (8, 9), are responsible for any address. Please try another list of stations'.
+2021-09-20 11:02:08.775 ERROR 8312 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :07ee9e70-4328-422f-bca1-0e6235d0b2e4
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 11:02:08.777 DEBUG 8312 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.RequestLogging   : After request [GET /flood/stations?stations=8,9]
+2021-09-20 11:14:14.069 ERROR 8312 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :07ee9e70-4328-422f-bca1-0e6235d0b2e4
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 11:14:33.195  INFO 29484 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 29484 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 11:14:33.198 DEBUG 29484 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 11:14:33.199  INFO 29484 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 11:14:34.680  INFO 29484 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 11:14:34.970 DEBUG 29484 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 11:14:35.792  INFO 29484 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-20 11:14:35.807  INFO 29484 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 3.127 seconds (JVM running for 3.69)
+2021-09-20 11:14:50.172  INFO 29484 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=8,9
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :a5f8c173-a075-471c-a679-0baafde84549
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 11:14:50.283 ERROR 29484 --- [http-nio-8080-exec-1] c.s.a.controller.FireStationController   : Request ended up in ERROR :'None of the given stations (8, 9), are responsible for any address. Please try another list of stations'.
+2021-09-20 11:14:50.289 ERROR 29484 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :a5f8c173-a075-471c-a679-0baafde84549
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 11:14:50.290 DEBUG 29484 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : After request [GET /flood/stations?stations=8,9]
+2021-09-20 11:14:50.376 ERROR 29484 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :a5f8c173-a075-471c-a679-0baafde84549
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 11:16:24.124  INFO 23636 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 23636 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 11:16:24.128 DEBUG 23636 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 11:16:24.129  INFO 23636 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 11:16:25.730  INFO 23636 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 11:16:26.024 DEBUG 23636 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 11:16:26.884  INFO 23636 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-20 11:16:26.900  INFO 23636 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 3.309 seconds (JVM running for 3.812)
+2021-09-20 11:16:30.758  INFO 23636 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=1,2
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :ed8713f4-6b14-466a-a226-85f275a4adbb
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 11:16:30.926  INFO 23636 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :ed8713f4-6b14-466a-a226-85f275a4adbb
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 11:16:30.927 DEBUG 23636 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : After request [GET /flood/stations?stations=1,2]
+2021-09-20 11:17:32.315  INFO 23636 --- [http-nio-8080-exec-5] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=8,9
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :f6c0bf7e-510f-406a-98d7-3f706ddf5dab
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 11:17:32.320 ERROR 23636 --- [http-nio-8080-exec-5] c.s.a.controller.FireStationController   : Request ended up in ERROR :'None of the given stations (8, 9), are responsible for any address. Please try another list of stations'.
+2021-09-20 11:17:32.325 ERROR 23636 --- [http-nio-8080-exec-5] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :f6c0bf7e-510f-406a-98d7-3f706ddf5dab
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 11:17:32.326 DEBUG 23636 --- [http-nio-8080-exec-5] c.s.apiSafetyNet.logger.RequestLogging   : After request [GET /flood/stations?stations=8,9]
+2021-09-20 11:17:32.343 ERROR 23636 --- [http-nio-8080-exec-5] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :f6c0bf7e-510f-406a-98d7-3f706ddf5dab
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 11:18:36.114  INFO 26312 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 26312 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 11:18:36.116 DEBUG 26312 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 11:18:36.117  INFO 26312 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 11:18:37.689  INFO 26312 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 11:18:38.027 DEBUG 26312 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 11:18:39.050  INFO 26312 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-20 11:18:39.068  INFO 26312 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 3.542 seconds (JVM running for 4.249)
+2021-09-20 11:18:40.668  INFO 26312 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=8,9
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :9639ed10-ff5a-42da-9f51-49a4d2c45c7b
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 11:18:40.783 ERROR 26312 --- [http-nio-8080-exec-1] c.s.a.controller.FireStationController   : Request ended up in ERROR :'None of the given stations (8, 9), are responsible for any address. Please try another list of stations'.
+2021-09-20 11:19:56.979 ERROR 26312 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :9639ed10-ff5a-42da-9f51-49a4d2c45c7b
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 11:20:17.235 ERROR 26312 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :9639ed10-ff5a-42da-9f51-49a4d2c45c7b
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:12:49.901  INFO 29228 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 29228 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 12:12:49.908 DEBUG 29228 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 12:12:49.909  INFO 29228 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 12:12:51.648  INFO 29228 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 12:12:51.962 DEBUG 29228 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 12:12:52.840  INFO 29228 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-20 12:12:52.854  INFO 29228 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 3.446 seconds (JVM running for 4.044)
+2021-09-20 12:12:55.542  INFO 29228 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=8,9
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :6661a511-89fe-4ece-97a8-aa19e6866aef
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:12:55.653 ERROR 29228 --- [http-nio-8080-exec-2] c.s.a.controller.FireStationController   : Request ended up in ERROR :'None of the given stations (8, 9), are responsible for any address. Please try another list of stations'.
+2021-09-20 12:12:55.659 ERROR 29228 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :6661a511-89fe-4ece-97a8-aa19e6866aef
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:12:55.730 ERROR 29228 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :6661a511-89fe-4ece-97a8-aa19e6866aef
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:16:15.847  INFO 29228 --- [http-nio-8080-exec-5] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=1,2
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :ae9376e8-ea95-4881-9c58-a131ccb09fd0
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:16:15.884  INFO 29228 --- [http-nio-8080-exec-5] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :ae9376e8-ea95-4881-9c58-a131ccb09fd0
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:20:50.373  INFO 23700 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 23700 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 12:20:50.377 DEBUG 23700 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 12:20:50.378  INFO 23700 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 12:20:52.439  INFO 23700 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 12:20:52.807 DEBUG 23700 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 12:20:53.950  INFO 23700 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-20 12:20:53.967  INFO 23700 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 4.246 seconds (JVM running for 4.997)
+2021-09-20 12:21:44.880  INFO 23700 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=1,2
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :1253080a-c4a9-4e4f-a1fd-7ac48112c406
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:22:58.937  INFO 23700 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :1253080a-c4a9-4e4f-a1fd-7ac48112c406
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:23:27.631  INFO 23700 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=8,9
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :6cd29c8a-8c21-40a4-be3e-8df9c59392c3
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:23:55.761 ERROR 23700 --- [http-nio-8080-exec-3] c.s.a.controller.FireStationController   : Request ended up in ERROR :'None of the given stations (8, 9), are responsible for any address. Please try another list of stations'.
+2021-09-20 12:24:08.833 ERROR 23700 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :6cd29c8a-8c21-40a4-be3e-8df9c59392c3
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:24:27.104 ERROR 23700 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :6cd29c8a-8c21-40a4-be3e-8df9c59392c3
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:30:08.693  INFO 31012 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 31012 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 12:30:08.696 DEBUG 31012 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 12:30:08.697  INFO 31012 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 12:30:10.659  INFO 31012 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 12:30:10.998 DEBUG 31012 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 12:30:12.146  INFO 31012 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-20 12:30:12.167  INFO 31012 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 4.235 seconds (JVM running for 4.964)
+2021-09-20 12:30:15.050  INFO 31012 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=8,9
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :80af64c5-f9c3-4913-aea7-22208618d489
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:30:15.152 ERROR 31012 --- [http-nio-8080-exec-2] c.s.a.controller.FireStationController   : Request ended up in ERROR :'None of the given stations (8, 9), are responsible for any address. Please try another list of stations'.
+2021-09-20 12:30:28.505  INFO 31012 --- [http-nio-8080-exec-4] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=1,2
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :ede0f74d-bae9-4489-92f0-bf23045fe82d
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:30:44.856  INFO 31012 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=1,2
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :b419f507-8561-48bc-a60a-7fe55eba3f5a
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:30:57.719  INFO 25000 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 25000 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 12:30:57.722 DEBUG 25000 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 12:30:57.723  INFO 25000 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 12:30:59.441  INFO 25000 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 12:30:59.768 DEBUG 25000 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 12:31:00.700  INFO 25000 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-20 12:31:00.719  INFO 25000 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 3.515 seconds (JVM running for 4.106)
+2021-09-20 12:33:10.161  INFO 25000 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=1,2
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :c20cfa01-5d5b-48b7-b038-ff6dd3dc9b29
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:33:10.344  INFO 25000 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in SUCCESS:
+Method :GET
+HTTP Code Status :200
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :c20cfa01-5d5b-48b7-b038-ff6dd3dc9b29
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:33:20.005  INFO 25000 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=8,9
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :92d3b387-1c38-4c09-b840-11bf9412dbd5
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:33:20.013 ERROR 25000 --- [http-nio-8080-exec-3] c.s.a.controller.FireStationController   : Request ended up in ERROR :'None of the given stations (8, 9), are responsible for any address. Please try another list of stations'.
+2021-09-20 12:33:20.020 ERROR 25000 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :92d3b387-1c38-4c09-b840-11bf9412dbd5
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:33:20.041 ERROR 25000 --- [http-nio-8080-exec-3] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :92d3b387-1c38-4c09-b840-11bf9412dbd5
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:37:17.914  INFO 6588 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 6588 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 12:37:17.918 DEBUG 6588 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 12:37:17.918  INFO 6588 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 12:37:19.527  INFO 6588 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 12:37:19.883 DEBUG 6588 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 12:37:22.602  INFO 6588 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-20 12:37:22.630  INFO 6588 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 5.29 seconds (JVM running for 6.105)
+2021-09-20 12:37:22.895  INFO 6588 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=8,9
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :dc275d8c-248c-4c56-88a8-2c9bed08c13d
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:37:48.207 ERROR 6588 --- [http-nio-8080-exec-1] c.s.a.controller.FireStationController   : Request ended up in ERROR :'None of the given stations (8, 9), are responsible for any address. Please try another list of stations'.
+2021-09-20 12:37:59.171 ERROR 6588 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :dc275d8c-248c-4c56-88a8-2c9bed08c13d
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:38:34.265 ERROR 6588 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :dc275d8c-248c-4c56-88a8-2c9bed08c13d
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:53:01.267  INFO 10292 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 10292 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 12:53:01.270 DEBUG 10292 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 12:53:01.271  INFO 10292 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 12:53:03.222  INFO 10292 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 12:53:03.567 DEBUG 10292 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 12:53:04.593  INFO 10292 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-20 12:53:04.612  INFO 10292 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 3.904 seconds (JVM running for 4.483)
+2021-09-20 12:53:04.861  INFO 10292 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=8,9
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :4515da70-cab7-4490-9c03-327a94a8521a
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:53:05.029 ERROR 10292 --- [http-nio-8080-exec-1] c.s.a.controller.FireStationController   : Request ended up in ERROR :'None of the given stations (8, 9), are responsible for any address. Please try another list of stations'.
+2021-09-20 12:53:05.140 ERROR 10292 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :4515da70-cab7-4490-9c03-327a94a8521a
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:56:12.180  INFO 31328 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 31328 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 12:56:12.190 DEBUG 31328 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 12:56:12.191  INFO 31328 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 12:56:13.728  INFO 31328 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 12:56:14.047 DEBUG 31328 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 12:56:14.904  INFO 31328 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-20 12:56:14.917  INFO 31328 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 3.224 seconds (JVM running for 3.761)
+2021-09-20 12:56:38.343  INFO 24828 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 24828 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 12:56:38.347 DEBUG 24828 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 12:56:38.347  INFO 24828 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 12:56:39.767  INFO 24828 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 12:56:40.071 DEBUG 24828 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 12:56:40.915  INFO 24828 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-20 12:56:40.927  INFO 24828 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 3.063 seconds (JVM running for 3.603)
+2021-09-20 12:57:07.360  INFO 24828 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=8,9
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :bfe832db-76f6-4e64-bebc-4ecb95706e2c
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 12:57:07.458 ERROR 24828 --- [http-nio-8080-exec-2] c.s.a.controller.FireStationController   : Request ended up in ERROR :'None of the given stations (8, 9), are responsible for any address. Please try another list of stations'.
+2021-09-20 12:57:07.534 ERROR 24828 --- [http-nio-8080-exec-2] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+TO STRING :org.apache.catalina.connector.ResponseFacade@3d13e425
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :bfe832db-76f6-4e64-bebc-4ecb95706e2c
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 13:08:39.979  INFO 22940 --- [main] c.s.a.ApiSafetyNetApplication            : Starting ApiSafetyNetApplication using Java 14.0.1 on LAPTOP-AS072B65 with PID 22940 (C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet\target\classes started by sukan in C:\Users\sukan\Documents\OpenClassRooms\Formation JAVA\Projet 5\Git\ProjetAPI\apiSafetyNet)
+2021-09-20 13:08:39.982 DEBUG 22940 --- [main] c.s.a.ApiSafetyNetApplication            : Running with Spring Boot v2.4.5, Spring v5.3.6
+2021-09-20 13:08:39.983  INFO 22940 --- [main] c.s.a.ApiSafetyNetApplication            : No active profile set, falling back to default profiles: default
+2021-09-20 13:08:41.392  INFO 22940 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-09-20 13:08:41.679 DEBUG 22940 --- [main] c.s.apiSafetyNet.logger.RequestLogging   : Filter 'requestLogging' configured for use
+2021-09-20 13:08:42.504  INFO 22940 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-20 13:08:42.517  INFO 22940 --- [main] c.s.a.ApiSafetyNetApplication            : Started ApiSafetyNetApplication in 3.018 seconds (JVM running for 3.516)
+2021-09-20 13:09:37.687  INFO 22940 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.RequestLogging   : HTTP request :
+Method :GET
+URL :http://localhost:8080/flood/stations?stations=8,9
+HEADERS :
+	content-type :application/json
+	authorization :token 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
+	user-agent :PostmanRuntime/7.28.4
+	accept :*/*
+	postman-token :a2a7c514-ad8b-4f47-8def-e368df6d6a0a
+	host :localhost:8080
+	accept-encoding :gzip, deflate, br
+	connection :keep-alive
+	content-length :105
+2021-09-20 13:09:37.788 ERROR 22940 --- [http-nio-8080-exec-1] c.s.a.controller.FireStationController   : Request ended up in ERROR :'None of the given stations (8, 9), are responsible for any address. Please try another list of stations'.
+2021-09-20 13:09:37.860 ERROR 22940 --- [http-nio-8080-exec-1] c.s.apiSafetyNet.logger.ResponseLogging  : HTTP response :
+This Request ended up in an ERROR:
+HTTP Code Status :404
+Method :GET
+HEADERS :
+	Content-Type :application/json
+	Transfer-Encoding :chunked
+	Date :Mon, 20 Sep 2021 11:09:37 GMT
+	Keep-Alive :timeout=60
+	Connection :keep-alive
